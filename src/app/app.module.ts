@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
 import { NotesComponent } from './notes/notes.component';
+import { SavedComponent } from './saved/saved.component';
+import { SignUpInComponent } from './sign-up-in/sign-up-in.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SearchComponent,
-    NotesComponent
+    NotesComponent,
+    SavedComponent,
+    SignUpInComponent
   ],
   imports: [
     BrowserModule,
