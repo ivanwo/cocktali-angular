@@ -1,9 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+
+const API_KEY;
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class CocktailAPIService {
-
-  constructor() { }
+  constructor(private http: HttpClient) {}
 }
