@@ -22,7 +22,7 @@ export class CocktailAPIService {
   }
   searchByCategory(searchTerm: string): Observable<any> {
     return this.http.get(
-      `https://www.thecocktaildb.com/api/json/v2/${API_KEY}/search.php?`,
+      `https://www.thecocktaildb.com/api/json/v2/${API_KEY}/filter.php?`,
       {
         params: {
           c: searchTerm

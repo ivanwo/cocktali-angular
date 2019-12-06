@@ -19,12 +19,13 @@
       [(ngModel)]="searchTerm"
       *ngIf="searchType !== 'Category'"
     />
-    <select name="" id="" *ngIf="searchType === 'Category'">
+    <select name="searchCategory" id="" *ngIf="searchType === 'Category'" [(ngModel)]="searchCategory">
       <option value="Cocktail">Cocktail</option>
       <option value="Shot">Shot</option>
       <option value="Ordinary_Drink">Ordinary Drink</option>
       <option value="Milk_/_Float_/_Shake">Milk/ Float/ Shake</option>
       <option value="Beer">Beer</option>
+      <option value="Other/Unknown">Other</option>
     </select>
     <button type="submit">Submit</button>
   </form>

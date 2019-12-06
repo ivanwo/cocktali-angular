@@ -10,6 +10,7 @@ export class SearchComponent implements OnInit {
   constructor(private cocktailAPIService: CocktailAPIService) {}
   searchType: string = "Name";
   searchTerm: string = "";
+  searchCategory: string = "Cocktail";
   resultsList: any[];
 
   ngOnInit() {}
@@ -34,6 +35,20 @@ export class SearchComponent implements OnInit {
       //search by ingredient using cleanSearch
     } else if (this.searchType === "Category") {
       //search by category
+      this.resultsList = [];
+      this.cocktailAPIService
+        .searchByCategory(this.searchCategory)
+        .subscribe(data => {
+          if (data.drinks !== null) {
+            for (let cocktail of data.drinks) {
+              this.resultsList.push({
+                name: cocktail.strDrink,
+                img: cocktail.strDrinkThumb,
+                id: cocktail.idDrink
+              });
+            }
+          }
+        });
     } else {
       alert("you shouldn't have gotten here");
     }
