@@ -1,17 +1,19 @@
 <p>sign-up-in works!</p>
-<form name="signInForm" action="">
+<form name="signInForm" action="" *ngIf="signIn" (submit)="signMeIn()">
   <label for="emailField">Email: </label>
-  <input name='emailField' type="email" placeholder="example@me.com"/>
+  <input name="emailField" type="email" placeholder="example@me.com" />
   <label for="passwordField">Password: </label>
-  <input name='passwordField' type="password">
-  <button type='submit'>Sign in</button>
+  <input name="passwordField" type="password" />
+  <button type="submit">Sign in</button>
+  <a (click)="signIn = false">not a user yet?</a>
 </form>
-<form name="signUpForm" action="">
-    <label for='nameField'>Name: </label>
-    <input name='nameField' type='text' placeholder='Sarah'>
-    <label for="emailField">Email: </label>
-    <input name='emailField' type="email" placeholder="example@me.com"/>
-    <label for="passwordField">Password: </label>
-    <input name='passwordField' type="password">
-    <button type='submit'>Sign me up</button>
+<form name="signUpForm" action="" *ngIf="!signIn" (submit)="signMeUp()">
+  <label for="nameField">Name: </label>
+  <input name="nameField" type="text" placeholder="Sarah" />
+  <label for="emailField">Email: </label>
+  <input name="emailField" type="email" placeholder="example@me.com" />
+  <label for="passwordField">Password: </label>
+  <input name="passwordField" type="password" />
+  <button type="submit">Sign me up</button>
+  <a (click)="signIn = true">already a user?</a>
 </form>

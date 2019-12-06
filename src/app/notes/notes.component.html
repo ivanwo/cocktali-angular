@@ -1,1 +1,22 @@
 <p>notes works!</p>
+<form (submit)="addNote()">
+  <input
+    type="text"
+    name="newNoteTitle"
+    placeholder="remember this!"
+    [(ngModel)]="newNoteTitle"
+  />
+  <label for="newNotePinned">Pinned</label>
+  <input name="newNotePinned" type="checkbox" [(ngModel)]="newNotePinned" />
+  <textarea
+    name="newNoteContent"
+    placeholder="sarah will be out on friday"
+    [(ngModel)]="newNoteContent"
+  >
+  </textarea>
+</form>
+
+<article *ngFor="let note of resultNotes">
+  <h2>{{ note.title }}</h2>
+  <p>{{ note.content }}</p>
+</article>
