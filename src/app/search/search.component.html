@@ -1,17 +1,36 @@
-<p>search works!</p>
+<!-- <p>search works!</p> -->
 <!-- 
     TO DO: 
     -add form
     -connect to API/ db service as appropriate
 -->
 <div>
-  <form>
-    <select>
+  <form (submit)="cocktailSearch()">
+    <select name="searchType" [(ngModel)]="searchType">
       <option value="Name">Name</option>
       <option value="Ingredient">Ingredient</option>
       <option value="Category">Category</option>
     </select>
-    <label for='search'>Search</label> <input type='text' name='search'>
-    <button type='submit'>Submit</button>
+    <!-- <label for="search">Search</label> -->
+    <input
+      type="text"
+      name="searchTerm"
+      placeholder="{{ placeHolder() }}"
+      [(ngModel)]="searchTerm"
+      *ngIf="searchType !== 'Category'"
+    />
+    <select name="" id="" *ngIf="searchType === 'Category'">
+      <option value="Cocktail">Cocktail</option>
+      <option value="Shot">Shot</option>
+      <option value="Ordinary_Drink">Ordinary Drink</option>
+      <option value="Milk_/_Float_/_Shake">Milk/ Float/ Shake</option>
+      <option value="Beer">Beer</option>
+    </select>
+    <button type="submit">Submit</button>
   </form>
 </div>
+<article *ngFor="let cocktail of resultsList">
+  <p>{{ cocktail.name }}</p>
+  <!-- <div style="background-image: {{ cocktail.img }}; width: 100px"></div> -->
+  <img src="{{ cocktail.img }}" style="width: 200px" alt="" />
+</article>
