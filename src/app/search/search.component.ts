@@ -25,6 +25,8 @@ export class SearchComponent implements OnInit {
             this.resultsList.push({
               name: cocktail.strDrink,
               img: cocktail.strDrinkThumb,
+              instructions: cocktail.strInstructions,
+              ingredients: this.cleanIngredients(cocktail),
               id: cocktail.idDrink
             });
           }
@@ -43,7 +45,9 @@ export class SearchComponent implements OnInit {
             for (let cocktail of data.drinks) {
               this.resultsList.push({
                 name: cocktail.strDrink,
+                instructions: cocktail.strInstructions,
                 img: cocktail.strDrinkThumb,
+                ingredients: this.cleanIngredients(cocktail),
                 id: cocktail.idDrink
               });
             }
@@ -52,6 +56,29 @@ export class SearchComponent implements OnInit {
     } else {
       alert("you shouldn't have gotten here");
     }
+  }
+  cleanIngredients(cocktail) {
+    let ingredients: string[] = [];
+    let currentIngredient: string;
+    let currentMeasure: string;
+    let newMeasure: string;
+    let newIngredient: string;
+    for (let i = 1; i < 15; i++) {
+      currentIngredient = "strIngredient" + i;
+      currentMeasure = "strMeasure" + i;
+      if (
+        cocktail[currentIngredient] !== null &&
+        cocktail[currentIngredient] !== ""
+      ) {
+        newIngredient = cocktail[currentIngredient];
+        if (cocktail[currentMeasure] === null) newMeasure = "";
+        else newMeasure = " : " + cocktail[currentMeasure];
+        ingredients.push(newIngredient + newMeasure);
+      } else {
+        break;
+      }
+    }
+    return ingredients;
   }
 
   placeHolder() {

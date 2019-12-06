@@ -19,7 +19,12 @@
       [(ngModel)]="searchTerm"
       *ngIf="searchType !== 'Category'"
     />
-    <select name="searchCategory" id="" *ngIf="searchType === 'Category'" [(ngModel)]="searchCategory">
+    <select
+      name="searchCategory"
+      id=""
+      *ngIf="searchType === 'Category'"
+      [(ngModel)]="searchCategory"
+    >
       <option value="Cocktail">Cocktail</option>
       <option value="Shot">Shot</option>
       <option value="Ordinary_Drink">Ordinary Drink</option>
@@ -34,4 +39,8 @@
   <p>{{ cocktail.name }}</p>
   <!-- <div style="background-image: {{ cocktail.img }}; width: 100px"></div> -->
   <img src="{{ cocktail.img }}" style="width: 200px" alt="" />
+  <p>{{ cocktail.instructions }}</p>
+  <ul>
+    <li *ngFor="let ingredient of cocktail.ingredients">{{ ingredient }}</li>
+  </ul>
 </article>
