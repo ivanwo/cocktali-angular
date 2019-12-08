@@ -4,9 +4,9 @@
     -add form
     -connect to API/ db service as appropriate
 -->
-<div>
+<section class="formHolder">
   <form (submit)="cocktailSearch()">
-    <select name="searchType" [(ngModel)]="searchType">
+    <select name="searchType" [(ngModel)]="searchType" class="searchType">
       <option value="Name">Name</option>
       <option value="Ingredient">Ingredient</option>
       <option value="Category">Category</option>
@@ -15,6 +15,7 @@
     <input
       type="text"
       name="searchTerm"
+      class="searchBox"
       placeholder="{{ placeHolder() }}"
       [(ngModel)]="searchTerm"
       *ngIf="searchType !== 'Category'"
@@ -22,6 +23,7 @@
     <select
       name="searchCategory"
       id=""
+      class="searchCategory"
       *ngIf="searchType === 'Category'"
       [(ngModel)]="searchCategory"
     >
@@ -32,15 +34,31 @@
       <option value="Beer">Beer</option>
       <option value="Other/Unknown">Other</option>
     </select>
-    <button type="submit">Submit</button>
+    <button type="submit" class="submit material-icons">search</button>
   </form>
-</div>
-<article *ngFor="let cocktail of resultsList">
-  <p>{{ cocktail.name }}</p>
-  <!-- <div style="background-image: {{ cocktail.img }}; width: 100px"></div> -->
-  <img src="{{ cocktail.img }}" style="width: 200px" alt="" />
-  <p>{{ cocktail.instructions }}</p>
-  <ul>
-    <li *ngFor="let ingredient of cocktail.ingredients">{{ ingredient }}</li>
-  </ul>
-</article>
+</section>
+<section class="resultsBox">
+  <article *ngFor="let cocktail of resultsList">
+    <!-- <div style="background-image: {{ cocktail.img }}; width: 100px"></div> -->
+    <div
+      *ngIf="!cocktail.front"
+      (click)="cocktail.front = !cocktail.front"
+      class="card front"
+    >
+      <img src="{{ cocktail.img }}" alt="" />
+      <h2>{{ cocktail.name }}</h2>
+    </div>
+    <div
+      *ngIf="cocktail.front"
+      (click)="cocktail.front = !cocktail.front"
+      class="card back"
+    >
+      <ul>
+        <li *ngFor="let ingredient of cocktail.ingredients">
+          {{ ingredient }}
+        </li>
+      </ul>
+      <p>{{ cocktail.instructions }}</p>
+    </div>
+  </article>
+</section>

@@ -14,11 +14,14 @@ export class DbService {
     //TODO: GET NOTES
     return this.http.get(this.BASE_URL + "/notes");
   }
-  addNote() {
+  addNote(note) {
     //TODO: ADD NOTE
+    return this.http.post(this.BASE_URL + "/notes", note);
+    // maybe that will work lol
   }
-  deleteNote() {
+  deleteNote(noteId) {
     //TODO: DELETE NOTE
+    return this.http.delete(this.BASE_URL + "/notes", noteId);
   }
   editNote() {
     //TODO: DELETE NOTE

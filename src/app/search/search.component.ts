@@ -25,6 +25,7 @@ export class SearchComponent implements OnInit {
             this.resultsList.push({
               name: cocktail.strDrink,
               img: cocktail.strDrinkThumb,
+              front: false,
               instructions: cocktail.strInstructions,
               ingredients: this.cleanIngredients(cocktail),
               id: cocktail.idDrink
@@ -42,12 +43,17 @@ export class SearchComponent implements OnInit {
         .searchByCategory(this.searchCategory)
         .subscribe(data => {
           if (data.drinks !== null) {
+            //
+            //  NOTE: THERE IS NO INGREDIENTS LIST OR INSTRUCTIONS RETURNED FROM A CATEGORY SEARCH!
+            //  you may have to run another set of searches based on the drink ID
+            //
             for (let cocktail of data.drinks) {
               this.resultsList.push({
                 name: cocktail.strDrink,
                 instructions: cocktail.strInstructions,
                 img: cocktail.strDrinkThumb,
-                ingredients: this.cleanIngredients(cocktail),
+                front: false,
+                // ingredients: this.cleanIngredients(cocktail),
                 id: cocktail.idDrink
               });
             }
