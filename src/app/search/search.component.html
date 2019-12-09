@@ -38,13 +38,9 @@
   </form>
 </section>
 <section class="resultsBox">
+  <h2 *ngIf="noResults">No Results</h2>
   <article *ngFor="let cocktail of resultsList">
-    <!-- <div style="background-image: {{ cocktail.img }}; width: 100px"></div> -->
-    <div
-      *ngIf="!cocktail.front"
-      (click)="flip(cocktail)"
-      class="card front"
-    >
+    <div *ngIf="!cocktail.front" (click)="flip(cocktail)" class="card front">
       <img src="{{ cocktail.img }}" alt="" />
       <h2>{{ cocktail.name }}</h2>
     </div>

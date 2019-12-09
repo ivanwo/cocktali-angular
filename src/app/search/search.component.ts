@@ -19,13 +19,18 @@ export class SearchComponent implements OnInit {
     "bloody mary"
   ];
   placeHolder: string;
+  noResults: boolean = false;
 
   cocktailSearch() {
     if (this.searchType === "Name") {
       // search by name
       this.resultsList = [];
       this.cocktailAPIService.searchByName(this.searchTerm).subscribe(data => {
-        if (data.drinks !== null) {
+        if (data.drinks === null) {
+          // alert("no results");
+          this.noResults = true;
+        } else {
+          this.noResults = false;
           for (let cocktail of data.drinks) {
             this.resultsList.push({
               name: cocktail.strDrink,
@@ -42,7 +47,11 @@ export class SearchComponent implements OnInit {
       this.cocktailAPIService
         .searchByIngredient(cleanSearch)
         .subscribe(data => {
-          if (data.drinks !== null) {
+          if (data.drinks === "None Found") {
+            // alert("no results");
+            this.noResults = true;
+          } else {
+            this.noResults = false;
             for (let cocktail of data.drinks) {
               this.resultsList.push({
                 name: cocktail.strDrink,
@@ -59,7 +68,11 @@ export class SearchComponent implements OnInit {
       this.cocktailAPIService
         .searchByCategory(this.searchCategory)
         .subscribe(data => {
-          if (data.drinks !== null) {
+          if (data.drinks === "None Found") {
+            // alert("no results");
+            this.noResults = true;
+          } else {
+            this.noResults = false;
             for (let cocktail of data.drinks) {
               this.resultsList.push({
                 name: cocktail.strDrink,
@@ -110,7 +123,6 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     // picks a placeholder cocktail name from the placeHolders array and sets it on init
     let num = Math.floor(Math.random() * Math.floor(this.placeHolders.length));
-    console.log(num);
     this.placeHolder = this.placeHolders[num];
   }
 
