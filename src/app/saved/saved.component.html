@@ -1,4 +1,11 @@
-<p>saved works!</p>
-<p *ngFor="let fav of favList">
-  {{ fav.cocktailid }} <button (click)="deleteFav(fav.savedid)">delete</button>
-</p>
+<!-- <p>saved works!</p> -->
+<h2>Your Saved</h2>
+<article *ngFor="let fav of favContents">
+  <h2>{{ fav.name }}</h2>
+  <img src="{{ fav.img }}" alt="" style="width: 150px;" />
+  <ul>
+    <li *ngFor="let ing of fav.ingredients">{{ ing }}</li>
+  </ul>
+  <p>{{ fav.instructions }}</p>
+  <button (click)="deleteFav(fav.savedid)">delete</button>
+</article>
