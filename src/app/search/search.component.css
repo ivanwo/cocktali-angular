@@ -34,12 +34,16 @@ form {
   border-bottom-right-radius: 25px;
   background: none;
   font-size: 1em;
+  border-left: none;
   border: 1px solid black;
 }
 .resultsBox {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+.card {
+  margin: 5px;
 }
 .card img,
 ul {

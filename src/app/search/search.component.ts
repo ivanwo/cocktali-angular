@@ -26,16 +26,27 @@ export class SearchComponent implements OnInit {
               name: cocktail.strDrink,
               img: cocktail.strDrinkThumb,
               front: false,
-              instructions: cocktail.strInstructions,
-              ingredients: this.cleanIngredients(cocktail),
               id: cocktail.idDrink
             });
           }
         }
       });
     } else if (this.searchType === "Ingredient") {
-      let cleanSearch = this.cleanIngredientsList();
-      //search by ingredient using cleanSearch
+      let cleanSearch = this.cleanIngredient(this.searchTerm);
+      this.cocktailAPIService
+        .searchByIngredient(cleanSearch)
+        .subscribe(data => {
+          if (data.drinks !== null) {
+            for (let cocktail of data.drinks) {
+              this.resultsList.push({
+                name: cocktail.strDrink,
+                img: cocktail.strDrinkThumb,
+                front: false,
+                id: cocktail.idDrink
+              });
+            }
+          }
+        });
     } else if (this.searchType === "Category") {
       //search by category
       this.resultsList = [];
@@ -43,17 +54,11 @@ export class SearchComponent implements OnInit {
         .searchByCategory(this.searchCategory)
         .subscribe(data => {
           if (data.drinks !== null) {
-            //
-            //  NOTE: THERE IS NO INGREDIENTS LIST OR INSTRUCTIONS RETURNED FROM A CATEGORY SEARCH!
-            //  you may have to run another set of searches based on the drink ID
-            //
             for (let cocktail of data.drinks) {
               this.resultsList.push({
                 name: cocktail.strDrink,
-                instructions: cocktail.strInstructions,
                 img: cocktail.strDrinkThumb,
                 front: false,
-                // ingredients: this.cleanIngredients(cocktail),
                 id: cocktail.idDrink
               });
             }
@@ -62,6 +67,15 @@ export class SearchComponent implements OnInit {
     } else {
       alert("you shouldn't have gotten here");
     }
+  }
+  flip(cocktail) {
+    if (!cocktail.front && cocktail.instructions !== null) {
+      this.cocktailAPIService.searchById(cocktail.id).subscribe(data => {
+        cocktail.instructions = data.drinks[0].strInstructions;
+        cocktail.ingredients = this.cleanIngredients(data.drinks[0]);
+      });
+    }
+    cocktail.front = !cocktail.front;
   }
   cleanIngredients(cocktail) {
     let ingredients: string[] = [];
@@ -92,7 +106,9 @@ export class SearchComponent implements OnInit {
     return "negroni";
   }
 
-  cleanIngredientsList() {
+  cleanIngredient(dirty: string): string {
     // TO DO: clean up user input to fit it to the API
+    
+    return "vodka";
   }
 }
