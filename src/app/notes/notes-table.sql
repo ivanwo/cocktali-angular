@@ -9,4 +9,4 @@ CREATE TABLE notes_table (
 );
 
 INSERT INTO api_student (pinned, added, title, content, userID)
-VALUES (TRUE, TRUE, 'Zoink','Drink is good',0);
+VALUES (TRUE, TRUE, 'Zoink','Drink is good',);
