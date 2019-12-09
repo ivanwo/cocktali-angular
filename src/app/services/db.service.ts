@@ -22,7 +22,7 @@ export class DbService {
   }
   deleteNote(noteId) {
     //TODO: DELETE NOTE
-    return this.http.delete(this.BASE_URL + "/notes", noteId);
+    return this.http.delete(this.BASE_URL + "/notes/" + noteId);
   }
   editNote(noteId) {
     //TODO: EDIT NOTE
