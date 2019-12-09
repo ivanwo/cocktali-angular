@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { CocktailAPIService } from "../services/cocktail-api.service";
+import { DbService } from "../services/db.service";
 
 @Component({
   selector: "app-search",
@@ -7,7 +8,10 @@ import { CocktailAPIService } from "../services/cocktail-api.service";
   styleUrls: ["./search.component.css"]
 })
 export class SearchComponent implements OnInit {
-  constructor(private cocktailAPIService: CocktailAPIService) {}
+  constructor(
+    private cocktailAPIService: CocktailAPIService,
+    private dbService: DbService
+  ) {}
   searchType: string = "Name";
   searchTerm: string = "";
   searchCategory: string = "Cocktail";
@@ -27,7 +31,6 @@ export class SearchComponent implements OnInit {
       this.resultsList = [];
       this.cocktailAPIService.searchByName(this.searchTerm).subscribe(data => {
         if (data.drinks === null) {
-          // alert("no results");
           this.noResults = true;
         } else {
           this.noResults = false;
@@ -118,6 +121,13 @@ export class SearchComponent implements OnInit {
       }
     }
     return ingredients;
+  }
+
+  addFav(cocktailId) {
+    // not sure this will work -ivan
+    // console.log("saving " + cocktailId + " at search component");
+    // PLEASE DO NOT FORGET TO SUBSCRIBE
+    this.dbService.addFav(cocktailId).subscribe();
   }
 
   ngOnInit() {

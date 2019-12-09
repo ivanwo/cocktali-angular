@@ -1,1 +1,4 @@
 <p>saved works!</p>
+<p *ngFor="let fav of favList">
+  {{ fav.cocktailid }} <button (click)="deleteFav(fav.savedid)">delete</button>
+</p>
