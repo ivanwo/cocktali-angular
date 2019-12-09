@@ -34,4 +34,3 @@ export class NotesComponent implements OnInit {
     this.getNotes();
   }
 }
-// watup
