@@ -24,7 +24,7 @@ export class DbService {
     //TODO: DELETE NOTE
     return this.http.delete(this.BASE_URL + "/notes", noteId);
   }
-  editNote() {
+  editNote(noteId) {
     //TODO: EDIT NOTE
     return this.http.put(this.BASE_URL + "/notes/", noteId);
   }
