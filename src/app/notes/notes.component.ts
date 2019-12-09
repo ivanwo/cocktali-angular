@@ -10,16 +10,26 @@ import { DbService } from "../services/db.service";
 })
 export class NotesComponent implements OnInit {
   newNoteTitle = "";
-  newNotePinned = "";
+  newNotePinned = false;
   newNoteContent = "";
   resultNotes;
   constructor(private dbService: DbService, private http: HttpClient) {}
 
   addNote() {
     // post note
-    this.getNotes();
+    this.dbService
+      .addNote({
+        title: this.newNoteTitle,
+        pinned: this.newNotePinned,
+        content: this.newNoteContent,
+        userId: 42
+      })
+      .subscribe(() => {
+        this.getNotes();
+      });
   }
   getNotes() {
+    this.resultNotes = [];
     this.dbService.getNotes().subscribe(data => {
       this.resultNotes = data;
       // console.log(data);
@@ -28,7 +38,9 @@ export class NotesComponent implements OnInit {
   }
 
   delete(noteId: number) {
-    this.dbService.deleteNote(noteId).subscribe(() => {});
+    this.dbService.deleteNote(noteId).subscribe(() => {
+      this.getNotes();
+    });
   }
   ngOnInit() {
     this.getNotes();
