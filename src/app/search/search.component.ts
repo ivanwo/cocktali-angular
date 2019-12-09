@@ -12,8 +12,13 @@ export class SearchComponent implements OnInit {
   searchTerm: string = "";
   searchCategory: string = "Cocktail";
   resultsList: any[];
-
-  ngOnInit() {}
+  placeHolders: string[] = [
+    "negroni",
+    "boulevardier",
+    "martini",
+    "bloody mary"
+  ];
+  placeHolder: string;
 
   cocktailSearch() {
     if (this.searchType === "Name") {
@@ -32,6 +37,7 @@ export class SearchComponent implements OnInit {
         }
       });
     } else if (this.searchType === "Ingredient") {
+      this.resultsList = [];
       let cleanSearch = this.cleanIngredient(this.searchTerm);
       this.cocktailAPIService
         .searchByIngredient(cleanSearch)
@@ -101,14 +107,17 @@ export class SearchComponent implements OnInit {
     return ingredients;
   }
 
-  placeHolder() {
-    // TO DO: Cycle through a couple placeholders (on init?)
-    return "negroni";
+  ngOnInit() {
+    // picks a placeholder cocktail name from the placeHolders array and sets it on init
+    let num = Math.floor(Math.random() * Math.floor(this.placeHolders.length));
+    console.log(num);
+    this.placeHolder = this.placeHolders[num];
   }
 
   cleanIngredient(dirty: string): string {
     // TO DO: clean up user input to fit it to the API
-    
-    return "vodka";
+    let cleanSearch = dirty.toLowerCase();
+
+    return cleanSearch;
   }
 }
