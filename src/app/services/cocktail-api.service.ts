@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 
 const API_KEY = 9973533;
+const BASE_URL = "https://www.thecocktaildb.com/api/json/v2";
 
 @Injectable({
   providedIn: "root"
@@ -10,34 +11,33 @@ const API_KEY = 9973533;
 export class CocktailAPIService {
   constructor(private http: HttpClient) {}
 
-  searchByName(searchTerm: string): Observable<any> {
-    return this.http.get(
-      `https://www.thecocktaildb.com/api/json/v2/${API_KEY}/search.php?`,
-      {
-        params: {
-          s: searchTerm
-        }
+  searchById(id): Observable<any> {
+    return this.http.get(`${BASE_URL}/${API_KEY}/lookup.php?`, {
+      params: {
+        i: id
       }
-    );
+    });
+  }
+
+  searchByName(searchTerm: string): Observable<any> {
+    return this.http.get(`${BASE_URL}/${API_KEY}/search.php?`, {
+      params: {
+        s: searchTerm
+      }
+    });
   }
   searchByCategory(searchTerm: string): Observable<any> {
-    return this.http.get(
-      `https://www.thecocktaildb.com/api/json/v2/${API_KEY}/filter.php?`,
-      {
-        params: {
-          c: searchTerm
-        }
+    return this.http.get(`${BASE_URL}/${API_KEY}/filter.php?`, {
+      params: {
+        c: searchTerm
       }
-    );
+    });
   }
   searchByIngredient(searchTerm: string): Observable<any> {
-    return this.http.get(
-      `https://www.thecocktaildb.com/api/json/v2/${API_KEY}/filter.php?`,
-      {
-        params: {
-          i: searchTerm
-        }
+    return this.http.get(`${BASE_URL}/${API_KEY}/filter.php?`, {
+      params: {
+        i: searchTerm
       }
-    );
+    });
   }
 }
