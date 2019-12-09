@@ -27,4 +27,5 @@
 <article *ngFor="let note of resultNotes">
   <h2>{{ note.title }}</h2>
   <p>{{ note.content }}</p>
+  <button (click)='deleteNote(note.id)'>DELETE</button>
 </article>

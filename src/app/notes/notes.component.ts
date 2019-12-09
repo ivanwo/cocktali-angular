@@ -32,12 +32,12 @@ export class NotesComponent implements OnInit {
     this.resultNotes = [];
     this.dbService.getNotes().subscribe(data => {
       this.resultNotes = data;
-      // console.log(data);
-      // console.log(this.resultNotes);
+      console.log(data);
+      console.log(this.resultNotes);
     });
   }
 
-  delete(noteId: number) {
+  deleteNote(noteId: number) {
     this.dbService.deleteNote(noteId).subscribe(() => {
       this.getNotes();
     });
