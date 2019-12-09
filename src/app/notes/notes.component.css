@@ -1,2 +1,24 @@
 /* font-family: 'Oxygen', sans-serif;
 font-family: 'Cormorant Garamond', serif; */
+.note-title {
+  font-family: 'Oxygen', sans-serif;
+  width: -webkit-fill-available;
+  margin: 10px;
+  text-align: center;
+  height: 50px;
+  font-size: large;
+  color: black;
+}
+
+input:focus {
+  border-style: outset;
+  outline-color: lavenderblush;
+}
+
+.pinned-btn {}
+
+
+.note-body:focus {
+
+  outline-color: rgba(255, 255, 255, 0);
+}
