@@ -13,7 +13,7 @@ export class NotesComponent implements OnInit {
   newNotePinned = "";
   newNoteContent = "";
   resultNotes;
-  constructor(private dbService: DbService) {}
+  constructor(private dbService: DbService, private http: HttpClient) {}
 
   addNote() {
     // post note
@@ -25,6 +25,10 @@ export class NotesComponent implements OnInit {
       // console.log(data);
       // console.log(this.resultNotes);
     });
+  }
+
+  delete(noteId: number) {
+    this.dbService.deleteNote(noteId).subscribe(() => {});
   }
   ngOnInit() {
     this.getNotes();
