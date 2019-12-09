@@ -1,8 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-<<<<<<< Updated upstream
 import { DbService } from "../services/db.service";
-=======
->>>>>>> Stashed changes
 
 @Component({
   selector: "app-saved",
@@ -10,7 +7,6 @@ import { DbService } from "../services/db.service";
   styleUrls: ["./saved.component.css"]
 })
 export class SavedComponent implements OnInit {
-<<<<<<< Updated upstream
   favList;
   userId: number = 42;
 
@@ -34,9 +30,4 @@ export class SavedComponent implements OnInit {
   ngOnInit() {
     this.getFavs();
   }
-=======
-  constructor() {}
-
-  ngOnInit() {}
->>>>>>> Stashed changes
 }
