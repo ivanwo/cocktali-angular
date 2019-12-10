@@ -12,22 +12,25 @@ export class SignUpInComponent implements OnInit {
   userEmail = "ivan@ivan.me";
   userName = "n/a";
   userId = 0;
+  loggedIn: boolean = false;
+  signInFail: boolean = false;
   constructor(private dbService: DbService) {}
 
   signMeIn() {
     //TODO: call service to sign in
     this.dbService.login(this.userEmail, this.userPassword).subscribe(data => {
       if (data === null) {
-        alert("failure to log in");
+        // alert("failure to log in");
+        this.signInFail = true;
       } else {
         // right now this just assumes the signin was successful
-
+        this.signInFail = false;
         this.userName = data[0].name;
         this.userId = data[0].id;
         this.signIn = 3;
-        // this.routes.navigate(["./"]);
+        this.loggedIn = true;
         console.log(this.userName + " : " + this.userId);
-        this.dbService.loggedIn = true;
+        this.dbService.setUser(this.userName, this.userId, this.loggedIn);
       }
     });
   }
@@ -35,5 +38,12 @@ export class SignUpInComponent implements OnInit {
     //TODO: call service to sign up
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    let user = this.dbService.getUser();
+    if (user.loggedIn) {
+      this.loggedIn = true;
+      this.userId = user.userId;
+      this.userName = user.userName;
+    }
+  }
 }

@@ -12,6 +12,11 @@ export class SearchComponent implements OnInit {
     private cocktailAPIService: CocktailAPIService,
     private dbService: DbService
   ) {}
+  // login activity
+  loggedIn: boolean = false;
+  userName: string = "";
+  userId: number = 0;
+  //
   searchType: string = "Name";
   searchTerm: string = "";
   searchCategory: string = "Cocktail";
@@ -133,6 +138,13 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
+    // checks if logged in with the service
+    let user = this.dbService.getUser();
+    if (user.loggedIn) {
+      this.loggedIn = user.loggedIn;
+      this.userId = user.userId;
+      this.userName = user.userName;
+    }
     // picks a placeholder cocktail name from the placeHolders array and sets it on init
     let num = Math.floor(Math.random() * Math.floor(this.placeHolders.length));
     this.placeHolder = this.placeHolders[num];

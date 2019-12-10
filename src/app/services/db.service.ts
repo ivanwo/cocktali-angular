@@ -7,8 +7,8 @@ import { Observable } from "rxjs";
 })
 export class DbService {
   BASE_URL = "http://localhost:3000";
-  userId: number = 42;
-  userName: string = "n/a";
+  userId: number = 0;
+  userName: string = "";
   loggedIn: boolean = false;
 
   constructor(private http: HttpClient) {}
@@ -61,5 +61,17 @@ export class DbService {
     // to do: specify what it returns above
     let body = { email: email, password: password };
     return this.http.post(`${this.BASE_URL}/login`, body);
+  }
+  setUser(userName: string, userId: number, loggedIn: boolean) {
+    this.userName = userName;
+    this.userId = userId;
+    this.loggedIn = loggedIn;
+  }
+  getUser() {
+    return {
+      userId: this.userId,
+      userName: this.userName,
+      loggedIn: this.loggedIn
+    };
   }
 }

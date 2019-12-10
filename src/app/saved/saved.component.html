@@ -1,4 +1,7 @@
 <!-- <p>saved works!</p> -->
+<a href="#" *ngIf="loggedIn">Logged in as {{ userName }}</a>
+<a routerLink="sign" *ngIf="!loggedIn">log in/ sign up</a>
+
 <h2>Your Saved</h2>
 
 <section class="resultsBox">

@@ -14,7 +14,5 @@ export class AppComponent {
   constructor(private dbService: DbService) {}
 
   ngOnInit() {
-    this.loggedIn = this.dbService.loggedIn;
-    this.userName = this.dbService.userName;
   }
 }
