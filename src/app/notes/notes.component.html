@@ -3,7 +3,8 @@
     <!-- <div class="" style="text-align: center;margin-top:5%">
     </div> -->
     <button class="add-btn">NEW</button>
-    <div>Sort By:
+    <div>
+      Sort By:
       <select>
         <option value="volvo">Volvo</option>
         <option value="saab">Saab</option>
@@ -11,18 +12,33 @@
     </div>
   </div>
   <form (submit)="addNote()">
-    <input class="note-title" type="text" name="newNoteTitle" placeholder="Note Title!" [(ngModel)]="newNoteTitle" />
+    <input
+      class="note-title"
+      type="text"
+      name="newNoteTitle"
+      placeholder="Note Title!"
+      [(ngModel)]="newNoteTitle"
+    />
     <label for="newNotePinned"></label>
-    <textarea class="note-body" name="newNoteContent" placeholder="place text here" [(ngModel)]="newNoteContent">
-
+    <textarea
+      class="note-body"
+      name="newNoteContent"
+      placeholder="place text here"
+      [(ngModel)]="newNoteContent"
+    >
     </textarea>
     <button type="submit">submit</button>
-    <input class="pinned-btn" name="newNotePinned" type="checkbox" [(ngModel)]="newNotePinned" />
+    <input
+      class="pinned-btn"
+      name="newNotePinned"
+      type="checkbox"
+      [(ngModel)]="newNotePinned"
+    />
   </form>
 </div>
 <article *ngFor="let note of resultNotes">
   <h2>{{ note.title }}</h2>
   <p>{{ note.content }}</p>
-  <button (click)='deleteNote(note.id)'>EDIT</button>
-  <button (click)='deleteNote()'>DELETE</button>
+  <button (click)="editNote(note)">EDIT</button>
+  <button (click)="deleteNote(note.id)">DELETE</button>
 </article>

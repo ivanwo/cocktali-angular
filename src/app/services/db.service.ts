@@ -26,9 +26,9 @@ export class DbService {
     //TODO: DELETE NOTE
     return this.http.delete(this.BASE_URL + "/notes/" + noteId);
   }
-  editNote(noteId) {
+  editNote(note) {
     //TODO: EDIT NOTE
-    return this.http.put(this.BASE_URL + "/notes/", noteId);
+    return this.http.put(this.BASE_URL + "/notes/" + note.id, note);
   }
 
   //
