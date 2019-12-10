@@ -40,22 +40,32 @@
 <section class="resultsBox">
   <h2 *ngIf="noResults">No Results</h2>
   <article *ngFor="let cocktail of resultsList">
-    <div *ngIf="!cocktail.front" (click)="flip(cocktail)" class="card front">
+    <div *ngIf="!cocktail.front" class="card front">
       <img src="{{ cocktail.img }}" alt="" />
-      <h2>{{ cocktail.name }}</h2>
+      <div class="infoBar" [ngClass]="{ favorite: cocktail.favorite }">
+        <h2>{{ cocktail.name }}</h2>
+        <button (click)="addFav(cocktail.id)">save</button>
+        <button (click)="flip(cocktail)">more</button>
+      </div>
     </div>
     <div
       *ngIf="cocktail.front"
       (click)="cocktail.front = !cocktail.front"
       class="card back"
     >
-      <ul>
-        <li *ngFor="let ingredient of cocktail.ingredients">
-          {{ ingredient }}
-        </li>
-      </ul>
-      <p>{{ cocktail.instructions }}</p>
+      <div class="backTop">
+        <ul>
+          <li *ngFor="let ingredient of cocktail.ingredients">
+            {{ ingredient }}
+          </li>
+        </ul>
+        <p>{{ cocktail.instructions }}</p>
+      </div>
+      <div class="infoBar">
+        <h2>{{ cocktail.name }}</h2>
+        <button (click)="addFav(cocktail.id)">save</button>
+        <button (click)="flip(cocktail)">less</button>
+      </div>
     </div>
-    <button (click)="addFav(cocktail.id)">save</button>
   </article>
 </section>

@@ -32,6 +32,7 @@ export class SavedComponent implements OnInit {
           this.favContents.push({
             name: data.drinks[0].strDrink,
             savedid: fav.savedid,
+            front: false,
             img: data.drinks[0].strDrinkThumb,
             id: data.drinks[0].idDrink,
             instructions: data.drinks[0].strInstructions,
@@ -40,6 +41,9 @@ export class SavedComponent implements OnInit {
         });
       }
     });
+  }
+  flip(cocktail) {
+    cocktail.front = !cocktail.front;
   }
   cleanIngredients(cocktail) {
     let ingredients: string[] = [];

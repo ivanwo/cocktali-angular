@@ -37,40 +37,47 @@ form {
   border-left: none;
   border: 1px solid black;
 }
+/* 
+  THE ABOVE WOULD BE FOR  THE SEARCHBAR, ALL BELOW IS STYLING FOR THE SEARCH RESULT
+  ITEMS AND RELATED ATTRIBUTES
+*/
 .resultsBox {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 .card {
+  width: 250px;
+  /* height: 260px; */
   margin: 5px;
 }
-.card img,
-ul {
-  width: 200px;
-  height: 200px;
-  border-radius: 25%;
-  border: 2px solid black;
+img {
+  width: 250px;
+  height: 250px;
+  margin-bottom: -5px;
+}
+.infoBar {
+  padding: 0 5px;
+  background-color: rgb(99, 173, 156);
+  margin: 0;
+  min-height: 25px;
+  display: flex;
+  justify-content: space-between;
+}
+/* favorite doesn't work yet to recognize favs on page */
+/* .favorite {
+  background: rgb(99, 173, 156);
+} */
+.backTop {
+  width: 250px;
+  min-height: 250px;
+  background: rgb(130, 206, 169);
 }
 
 ul {
   display: flex;
+  padding-left: 25px;
+  /* list-style: none; */
   flex-direction: column;
   justify-content: center;
-  /* align-items: center; */
-}
-.card.front,
-.card.back {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.card h2,
-p {
-  width: 250px;
-  flex: 1;
-  min-height: 75px;
-  border: 2px solid black;
-  border-radius: 10%;
 }

@@ -13,7 +13,7 @@ export class SearchComponent implements OnInit {
     private dbService: DbService
   ) {}
   searchType: string = "Name";
-  searchTerm: string = "";
+  searchTerm: string = "Martini";
   searchCategory: string = "Cocktail";
   resultsList: any[];
   placeHolders: string[] = [
@@ -59,6 +59,7 @@ export class SearchComponent implements OnInit {
               this.resultsList.push({
                 name: cocktail.strDrink,
                 img: cocktail.strDrinkThumb,
+                favorite: false,
                 front: false,
                 id: cocktail.idDrink
               });
@@ -80,6 +81,7 @@ export class SearchComponent implements OnInit {
               this.resultsList.push({
                 name: cocktail.strDrink,
                 img: cocktail.strDrinkThumb,
+                favorite: false,
                 front: false,
                 id: cocktail.idDrink
               });
@@ -134,6 +136,7 @@ export class SearchComponent implements OnInit {
     // picks a placeholder cocktail name from the placeHolders array and sets it on init
     let num = Math.floor(Math.random() * Math.floor(this.placeHolders.length));
     this.placeHolder = this.placeHolders[num];
+    this.cocktailSearch();
   }
 
   cleanIngredient(dirty: string): string {

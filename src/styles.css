@@ -7,3 +7,14 @@ header {
   align-items: center;
   flex-direction: column;
 }
+body {
+  background: rgb(239, 249, 238);
+}
+* {
+  font-family: sans-serif;
+}
+a,
+h2 {
+  /* color: rgb(99, 173, 156); */
+  color: rgb(22, 120, 86);
+}
