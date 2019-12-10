@@ -49,8 +49,8 @@ input:focus {
 
 .pinned-btn {}
 
-
-.note-body:focus {
-
-  outline-color: rgba(255, 255, 255, 0);
+.note-body {
+  margin: 10px;
+  width: -webkit-fill-available;
+  ;
 }
