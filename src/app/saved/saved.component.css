@@ -26,6 +26,7 @@ h2 {
 .backTop {
   width: 250px;
   min-height: 250px;
+  margin-bottom: -10px;
   background: rgb(130, 206, 169);
 }
 

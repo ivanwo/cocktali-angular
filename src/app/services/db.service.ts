@@ -7,7 +7,9 @@ import { Observable } from "rxjs";
 })
 export class DbService {
   BASE_URL = "http://localhost:3000";
-  userId = 42;
+  userId: number = 42;
+  userName: string = "n/a";
+  loggedIn: boolean = false;
 
   constructor(private http: HttpClient) {}
 
@@ -55,8 +57,9 @@ export class DbService {
   //  LOG IN/ SIGN UP SECTION
   //  STRETCH GOAL -IVAN
   //
-  // login(email:string, password:string){
-  //   // to do: specify what it returns above
-  //   return this.http.get(`https://localhost:3000/login`, {email: email, password: password});
-  // }
+  login(email: string, password: string) {
+    // to do: specify what it returns above
+    let body = { email: email, password: password };
+    return this.http.post(`${this.BASE_URL}/login`, body);
+  }
 }

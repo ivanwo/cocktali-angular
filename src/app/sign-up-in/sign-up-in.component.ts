@@ -7,11 +7,24 @@ import { DbService } from "../services/db.service";
   styleUrls: ["./sign-up-in.component.css"]
 })
 export class SignUpInComponent implements OnInit {
-  signIn: boolean = true;
+  signIn: number = 0;
+  userPassword = "ivanpassword";
+  userEmail = "ivan@ivan.me";
+  userName = "n/a";
+  userId = 0;
   constructor(private dbService: DbService) {}
 
   signMeIn() {
     //TODO: call service to sign in
+    this.dbService.login(this.userEmail, this.userPassword).subscribe(data => {
+      // right now this just assumes the signin was successful
+      let user = { id: 0, name: "n/a" };
+      this.userName = data[0].name;
+      this.userId = data[0].id;
+      console.log(user);
+      this.signIn = 3;
+      this.dbService.loggedIn = true;
+    });
   }
   signMeUp() {
     //TODO: call service to sign up
