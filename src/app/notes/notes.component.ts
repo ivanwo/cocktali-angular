@@ -38,12 +38,19 @@ export class NotesComponent implements OnInit {
   }
 
   deleteNote(noteId: number) {
-    this.dbService.deleteNote(noteId).subscribe(data => {});
+    this.dbService.deleteNote(noteId).subscribe(data => {
+      this.resultNotes = data;
+    });
   }
 
   editNote(note) {
-    this.dbService.editNote(note).subscribe(() => {
-      this.getNotes();
+    this.dbService.editNote(note).subscribe(data => {
+      this.newNoteTitle = note.title;
+      this.newNoteContent = note.content;
+      this.newNotePinned = note.pinned;
+      this.dbService.deleteNote(note.id).subscribe(data => {
+        this.resultNotes = data;
+      });
     });
   }
   ngOnInit() {
