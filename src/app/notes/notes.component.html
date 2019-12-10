@@ -3,12 +3,8 @@
     <!-- <div class="" style="text-align: center;margin-top:5%">
     </div> -->
     <button class="add-btn">NEW</button>
-<<<<<<< HEAD
-    <div class="sort-by">Sort By:
-=======
-    <div>
+    <div class="sort-by">
       Sort By:
->>>>>>> fb58c742bfb05a869eccf43940369818d9bd65bc
       <select>
         <option value="volvo">Volvo</option>
         <option value="alphabetical">Alphabetical</option>
@@ -16,12 +12,28 @@
     </div>
   </div>
   <form (submit)="addNote()">
-    <input class="note-title" type="text" name="newNoteTitle" placeholder="Note Title!" [(ngModel)]="newNoteTitle" />
+    <input
+      class="note-title"
+      type="text"
+      name="newNoteTitle"
+      placeholder="Note Title!"
+      [(ngModel)]="newNoteTitle"
+    />
     <label for="newNotePinned"></label>
-    <textarea class="note-body" name="newNoteContent" placeholder="place text here" [(ngModel)]="newNoteContent">
+    <textarea
+      class="note-body"
+      name="newNoteContent"
+      placeholder="place text here"
+      [(ngModel)]="newNoteContent"
+    >
     </textarea>
     <button type="submit">submit</button>
-    <input class="pinned-btn" name="newNotePinned" type="checkbox" [(ngModel)]="newNotePinned" />
+    <input
+      class="pinned-btn"
+      name="newNotePinned"
+      type="checkbox"
+      [(ngModel)]="newNotePinned"
+    />
   </form>
 </div>
 <article *ngFor="let note of resultNotes">

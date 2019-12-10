@@ -1,4 +1,6 @@
-<a href="#" *ngIf="loggedIn">Logged in as {{ userName }}</a>
+<div *ngIf="loggedIn">
+  Logged in as <a href="#">{{ userName }}</a>
+</div>
 <a routerLink="sign" *ngIf="!loggedIn">log in/ sign up</a>
 
 <nav class="homeLinkHolder">
