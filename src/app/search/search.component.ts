@@ -13,7 +13,7 @@ export class SearchComponent implements OnInit {
     private dbService: DbService
   ) {}
   searchType: string = "Name";
-  searchTerm: string = "Martini";
+  searchTerm: string = "";
   searchCategory: string = "Cocktail";
   resultsList: any[];
   placeHolders: string[] = [
@@ -142,7 +142,6 @@ export class SearchComponent implements OnInit {
   cleanIngredient(dirty: string): string {
     // TO DO: clean up user input to fit it to the API
     let cleanSearch = dirty.toLowerCase();
-
     return cleanSearch;
   }
 }

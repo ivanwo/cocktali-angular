@@ -7,7 +7,7 @@
       <img src="{{ cocktail.img }}" alt="" />
       <div class="infoBar" [ngClass]="{ favorite: cocktail.favorite }">
         <h2>{{ cocktail.name }}</h2>
-        <button (click)="deleteFav(fav.savedid)">delete</button>
+        <button (click)="deleteFav(cocktail.savedid)">delete</button>
         <button (click)="flip(cocktail)">more</button>
       </div>
     </div>
@@ -26,7 +26,7 @@
       </div>
       <div class="infoBar">
         <h2>{{ cocktail.name }}</h2>
-        <button (click)="deleteFav(fav.savedid)">delete</button>
+        <button (click)="deleteFav(cocktail.savedid)">delete</button>
         <button (click)="flip(cocktail)">less</button>
       </div>
     </div>
