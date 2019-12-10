@@ -1,4 +1,34 @@
-<p>saved works!</p>
-<p *ngFor="let fav of favList">
-  {{ fav.cocktailid }} <button (click)="deleteFav(fav.savedid)">delete</button>
-</p>
+<!-- <p>saved works!</p> -->
+<h2>Your Saved</h2>
+
+<section class="resultsBox">
+  <article *ngFor="let cocktail of favContents">
+    <div *ngIf="!cocktail.front" class="card front">
+      <img src="{{ cocktail.img }}" alt="" />
+      <div class="infoBar" [ngClass]="{ favorite: cocktail.favorite }">
+        <h2>{{ cocktail.name }}</h2>
+        <button (click)="deleteFav(cocktail.savedid)">delete</button>
+        <button (click)="flip(cocktail)">more</button>
+      </div>
+    </div>
+    <div
+      *ngIf="cocktail.front"
+      (click)="cocktail.front = !cocktail.front"
+      class="card back"
+    >
+      <div class="backTop">
+        <ul>
+          <li *ngFor="let ingredient of cocktail.ingredients">
+            {{ ingredient }}
+          </li>
+        </ul>
+        <p>{{ cocktail.instructions }}</p>
+      </div>
+      <div class="infoBar">
+        <h2>{{ cocktail.name }}</h2>
+        <button (click)="deleteFav(cocktail.savedid)">delete</button>
+        <button (click)="flip(cocktail)">less</button>
+      </div>
+    </div>
+  </article>
+</section>

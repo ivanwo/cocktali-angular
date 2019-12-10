@@ -59,6 +59,7 @@ export class SearchComponent implements OnInit {
               this.resultsList.push({
                 name: cocktail.strDrink,
                 img: cocktail.strDrinkThumb,
+                favorite: false,
                 front: false,
                 id: cocktail.idDrink
               });
@@ -80,6 +81,7 @@ export class SearchComponent implements OnInit {
               this.resultsList.push({
                 name: cocktail.strDrink,
                 img: cocktail.strDrinkThumb,
+                favorite: false,
                 front: false,
                 id: cocktail.idDrink
               });
@@ -134,12 +136,12 @@ export class SearchComponent implements OnInit {
     // picks a placeholder cocktail name from the placeHolders array and sets it on init
     let num = Math.floor(Math.random() * Math.floor(this.placeHolders.length));
     this.placeHolder = this.placeHolders[num];
+    this.cocktailSearch();
   }
 
   cleanIngredient(dirty: string): string {
     // TO DO: clean up user input to fit it to the API
     let cleanSearch = dirty.toLowerCase();
-
     return cleanSearch;
   }
 }

@@ -6,6 +6,6 @@
   <a routerLink="./">
     <img src="../assets/cocktali_logo_v1_.png" class="logo" alt="" />
   </a>
-  <a routerLink="sign">log in/ sign up</a>
+  <a *ngIf="!loggedIn" routerLink="sign">log in/ sign up</a>
 </header>
 <router-outlet></router-outlet>
