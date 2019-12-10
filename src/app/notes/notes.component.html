@@ -36,9 +36,27 @@
     />
   </form>
 </div>
-<article *ngFor="let note of resultNotes">
-  <h2>{{ note.title }}</h2>
-  <p>{{ note.content }}</p>
-  <button (click)="editNote(note)">EDIT</button>
-  <button (click)="deleteNote(note.id)">DELETE</button>
-</article>
+<div *ngFor="let note of resultNotes; index as i">
+  <article *ngIf="!editing[i]">
+    <h2>{{ note.title }}</h2>
+    <p>{{ note.content }}</p>
+    <button (click)="editing[i] = true">EDIT</button>
+    <button (click)="deleteNote(note.id)">DELETE</button>
+  </article>
+  <form *ngIf="editing[i]">
+    <p>editor</p>
+    <input
+      class="title-edit"
+      type="text"
+      name="editNoteTitle"
+      placeholder="Edit title"
+    />
+    <input
+      class="content-edit"
+      type="text"
+      name="editNoteContent"
+      placeholder="Edit content"
+    />
+    <button (click)="editing[i] = false">FINISHED</button>
+  </form>
+</div>
