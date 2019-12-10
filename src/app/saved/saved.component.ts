@@ -8,8 +8,11 @@ import { CocktailAPIService } from "../services/cocktail-api.service";
   styleUrls: ["./saved.component.css"]
 })
 export class SavedComponent implements OnInit {
+  loggedIn: boolean = false;
+  userName: string = "";
+  userId: number = 0;
+
   favList;
-  userId: number = 42;
   favContents = [];
 
   constructor(
@@ -70,5 +73,11 @@ export class SavedComponent implements OnInit {
   }
   ngOnInit() {
     this.getFavs();
+    let user = this.dbService.getUser();
+    if (user.loggedIn) {
+      this.loggedIn = user.loggedIn;
+      this.userId = user.userId;
+      this.userName = user.userName;
+    }
   }
 }
