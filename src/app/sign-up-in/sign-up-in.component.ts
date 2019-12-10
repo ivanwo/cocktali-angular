@@ -17,13 +17,18 @@ export class SignUpInComponent implements OnInit {
   signMeIn() {
     //TODO: call service to sign in
     this.dbService.login(this.userEmail, this.userPassword).subscribe(data => {
-      // right now this just assumes the signin was successful
-      this.userName = data[0].name;
-      this.userId = data[0].id;
-      this.signIn = 3;
-      // this.routes.navigate(["./"]);
-      console.log(this.userName + " : " + this.userId);
-      this.dbService.loggedIn = true;
+      if (data === null) {
+        alert("failure to log in");
+      } else {
+        // right now this just assumes the signin was successful
+
+        this.userName = data[0].name;
+        this.userId = data[0].id;
+        this.signIn = 3;
+        // this.routes.navigate(["./"]);
+        console.log(this.userName + " : " + this.userId);
+        this.dbService.loggedIn = true;
+      }
     });
   }
   signMeUp() {

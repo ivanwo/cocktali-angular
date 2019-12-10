@@ -32,7 +32,7 @@ export class DbService {
   }
 
   //
-  //  FAVORITES SECTIONS, NOT SURE IF IT WILL WORK AS IS
+  //  FAVORITES SECTIONS, should be working for now
   //  -IVAN
   //
   //
