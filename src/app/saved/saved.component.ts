@@ -11,6 +11,7 @@ export class SavedComponent implements OnInit {
   loggedIn: boolean = false;
   userName: string = "";
   userId: number = 0;
+  message: string = "Your Saved";
 
   favList;
   favContents = [];
@@ -28,22 +29,36 @@ export class SavedComponent implements OnInit {
   getFavs() {
     this.favList = [];
     this.favContents = [];
-    this.dbService.getFavs(this.userId).subscribe(datum => {
-      this.favList = datum;
-      for (let fav of this.favList) {
-        this.apiService.searchById(fav.cocktailid).subscribe(data => {
-          this.favContents.push({
-            name: data.drinks[0].strDrink,
-            savedid: fav.savedid,
-            front: false,
-            img: data.drinks[0].strDrinkThumb,
-            id: data.drinks[0].idDrink,
-            instructions: data.drinks[0].strInstructions,
-            ingredients: this.cleanIngredients(data.drinks[0])
-          });
-        });
-      }
-    });
+    if (!this.loggedIn) {
+      // alert("you must log in to save cocktails");
+      this.message = "You must Log in to Save Cocktails";
+    } else {
+      this.message = "Your Saved Cocktails";
+      this.dbService.getFavs(this.userId).subscribe(datum => {
+        this.favList = datum;
+        if (this.favList.length === 0) {
+          this.message = "You have no Saved Cocktails";
+        }
+        // console.log(this.favList);
+        for (let fav of this.favList) {
+          // console.log(fav);
+          if (fav.cocktailid !== null) {
+            this.apiService.searchById(fav.cocktailid).subscribe(data => {
+              // console.log(data);
+              this.favContents.push({
+                name: data.drinks[0].strDrink,
+                savedid: fav.savedid,
+                front: false,
+                img: data.drinks[0].strDrinkThumb,
+                id: data.drinks[0].idDrink,
+                instructions: data.drinks[0].strInstructions,
+                ingredients: this.cleanIngredients(data.drinks[0])
+              });
+            });
+          }
+        }
+      });
+    }
   }
   flip(cocktail) {
     cocktail.front = !cocktail.front;
@@ -72,12 +87,12 @@ export class SavedComponent implements OnInit {
     return ingredients;
   }
   ngOnInit() {
-    this.getFavs();
     let user = this.dbService.getUser();
     if (user.loggedIn) {
       this.loggedIn = user.loggedIn;
       this.userId = user.userId;
       this.userName = user.userName;
     }
+    this.getFavs();
   }
 }

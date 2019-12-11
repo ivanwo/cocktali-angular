@@ -15,6 +15,8 @@ export class NotesComponent implements OnInit {
   resultNotes;
   editing: boolean[] = [];
   visible: boolean = false;
+  editNoteTitle = "";
+  editNoteContent = "";
   constructor(private dbService: DbService, private http: HttpClient) {}
 
   addNote() {
@@ -39,22 +41,42 @@ export class NotesComponent implements OnInit {
       }
       console.log(data);
       console.log(this.resultNotes);
+      //add pinned notes to the top
+      this.resultNotes.sort((a, b) => a.pinned - b.pinned);
+      this.resultNotes.reverse();
     });
+  }
+  sort() {
+    // this.resultNotes.sort((a, b) => a.title < b.title);
+    // alert("changed");
+
+    this.resultNotes.sort((a, b) => a.pinned - b.pinned);
+    // this.resultNotes.reverse();
   }
 
   deleteNote(noteId: number) {
     this.dbService.deleteNote(noteId).subscribe(() => {
-      this.getNotes;
+      this.getNotes();
     });
   }
 
-  editNote(note) {
-    this.dbService.editNote(note).subscribe(() => {
-      // this.newNoteTitle = note.title;
-      // this.newNoteContent = note.content;
-      // this.newNotePinned = note.pinned;
-      this.getNotes();
-    });
+  editNote(i, id) {
+    console.log(this.editNoteTitle);
+    this.editing[i] = false;
+    this.dbService
+      .editNote({
+        title: this.editNoteTitle,
+        pinned: this.newNotePinned,
+        id: id,
+        content: this.editNoteContent,
+        userId: 42
+      })
+      .subscribe(() => {
+        // this.newNoteTitle = note.title;
+        // this.newNoteContent = note.content;
+        // this.newNotePinned = note.pinned;
+        this.getNotes();
+      });
   }
   appear() {
     console.log("you clicked");

@@ -2,9 +2,9 @@
 <div *ngIf="loggedIn">
   Logged in as <a href="#">{{ userName }}</a>
 </div>
-<a routerLink="sign" *ngIf="!loggedIn">log in/ sign up</a>
+<a href="./sign" *ngIf="!loggedIn">log in/ sign up</a>
 
-<h2>Your Saved</h2>
+<h2>{{ message }}</h2>
 
 <section class="resultsBox">
   <article *ngFor="let cocktail of favContents">

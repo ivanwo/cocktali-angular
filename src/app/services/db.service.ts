@@ -28,6 +28,7 @@ export class DbService {
   }
   editNote(note) {
     //TODO: EDIT NOTE
+    console.log(note);
     return this.http.put(this.BASE_URL + "/notes/" + note.id, note);
   }
 
@@ -37,11 +38,11 @@ export class DbService {
   //
   //
   getFavs(userId) {
-    return this.http.get(this.BASE_URL + "/favs");
+    return this.http.get(this.BASE_URL + "/favs/" + userId);
     // once log in system is implemented,
     // add filter send user Id to only get favs from that user
   }
-  addFav(cocktailId) {
+  addFav(cocktailId, userId) {
     // console.log("saving " + cocktailId + " at DbService ");
     return this.http.post(this.BASE_URL + "/favs", {
       cocktailId: cocktailId,
@@ -61,6 +62,10 @@ export class DbService {
     // to do: specify what it returns above
     let body = { email: email, password: password };
     return this.http.post(`${this.BASE_URL}/login`, body);
+  }
+  signUp(newUser) {
+    return this.http.post(`${this.BASE_URL}/signup`, { newUser });
+    //
   }
   setUser(userName: string, userId: number, loggedIn: boolean) {
     this.userName = userName;

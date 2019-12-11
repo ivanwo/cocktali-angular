@@ -17,6 +17,7 @@ export class SearchComponent implements OnInit {
   userName: string = "";
   userId: number = 0;
   //
+  errorMsg: boolean = false;
   searchType: string = "Name";
   searchTerm: string = "";
   searchCategory: string = "Cocktail";
@@ -134,7 +135,15 @@ export class SearchComponent implements OnInit {
     // not sure this will work -ivan
     // console.log("saving " + cocktailId + " at search component");
     // PLEASE DO NOT FORGET TO SUBSCRIBE
-    this.dbService.addFav(cocktailId).subscribe();
+    if (!this.loggedIn) {
+      // alert("please sign up to save favorites");
+      this.toggleError();
+    } else {
+      this.dbService.addFav(cocktailId, this.userId).subscribe();
+    }
+  }
+  toggleError() {
+    this.errorMsg = !this.errorMsg;
   }
 
   ngOnInit() {
