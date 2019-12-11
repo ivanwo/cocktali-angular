@@ -49,10 +49,11 @@ export class NotesComponent implements OnInit {
   }
 
   editNote(note) {
-    this.dbService.editNote(note).subscribe(data => {
+    this.dbService.editNote(note).subscribe(() => {
       // this.newNoteTitle = note.title;
       // this.newNoteContent = note.content;
       // this.newNotePinned = note.pinned;
+      this.getNotes();
     });
   }
   appear() {
