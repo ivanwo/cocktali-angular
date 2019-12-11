@@ -11,15 +11,27 @@
       </select>
     </div>
   </div>
-  <form (submit)="addNote()" [ngClass]="{ testing: visible }" class="addForm">
-    <span (click)="appear()" class="close">X</span>
-    <input class="note-title" type="text" name="newNoteTitle" placeholder="Note Title!" [(ngModel)]="newNoteTitle" />
+
+  <form (submit)="addNote()" [ngClass]="{testing: visible}" class="addForm">
+    <div class="form-title">
+      <span (click)="appear()" class="close">X</span>
+      <input class="note-title" type="text" name="newNoteTitle" placeholder="Note Title!" [(ngModel)]="newNoteTitle" />
+    </div>
     <label for="newNotePinned"></label>
     <textarea class="note-body" name="newNoteContent" placeholder="place text here" [(ngModel)]="newNoteContent">
-    </textarea>
-    <button (click)="appear()" type="submit">submit</button>
+      </textarea>
+    <button class="submit-btn" (click)="appear()" type="submit">submit</button>
     <input class="pinned-btn" name="newNotePinned" type="checkbox" [(ngModel)]="newNotePinned" />
-  </form>
+
+    <form (submit)="addNote()" [ngClass]="{ testing: visible }" class="addForm">
+      <span (click)="appear()" class="close">X</span>
+      <input class="note-title" type="text" name="newNoteTitle" placeholder="Note Title!" [(ngModel)]="newNoteTitle" />
+      <label for="newNotePinned"></label>
+      <textarea class="note-body" name="newNoteContent" placeholder="place text here" [(ngModel)]="newNoteContent">
+    </textarea>
+      <button (click)="appear()" type="submit">submit</button>
+      <input class="pinned-btn" name="newNotePinned" type="checkbox" [(ngModel)]="newNotePinned" />
+    </form>
 </div>
 
 <div *ngFor="let note of resultNotes; index as i">

@@ -20,13 +20,15 @@ font-family: 'Cormorant Garamond', serif; */
   font-family: 'Oxygen', sans-serif;
   width: -webkit-fill-available;
   margin: 10px;
-  text-align: center;
   height: 50px;
   font-size: large;
   color: black;
   border: none;
   border-radius: 10px;
-  width: 250px;
+  padding: 0px;
+  padding-left: 10px;
+  background: ghostwhite;
+  border: 2px #afbaaf4d solid;
 }
 
 .add-btn {
@@ -79,6 +81,10 @@ input:focus {
   min-width: -webkit-fill-available;
   max-width: -webkit-fill-available;
   font-size: medium;
+  padding: 10px;
+  background: ghostwhite;
+  border: 2px #afbaaf4d solid;
+  font-size: larger;
 }
 
 .addForm {
@@ -100,11 +106,21 @@ input:focus {
 
 .close {
   color: #747474;
-
   margin: 10px;
   font-size: large;
   position: relative;
-
-  background: white;
   padding: 12px;
+  background: ghostwhite;
+  border: 2px #afbaaf4d solid;
+  font-size: larger;
+}
+
+.submit-btn {
+  transform: translate(325%, 0%);
+}
+
+.form-title {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
 }
