@@ -1,7 +1,7 @@
 <div class="container">
   <div class="add-bar">
     <!-- <div class="" style="text-align: center;margin-top:5%">
-    </div> -->
+      </div> -->
     <button class="add-btn" (click)="appear()">NEW</button>
     <div class="sort-by">Sort By:
       <select>
@@ -15,7 +15,7 @@
     <input class="note-title" type="text" name="newNoteTitle" placeholder="Note Title!" [(ngModel)]="newNoteTitle" />
     <label for="newNotePinned"></label>
     <textarea class="note-body" name="newNoteContent" placeholder="place text here" [(ngModel)]="newNoteContent">
-    </textarea>
+      </textarea>
     <button (click)="appear()" type="submit">submit</button>
     <input class="pinned-btn" name="newNotePinned" type="checkbox" [(ngModel)]="newNotePinned" />
   </form>
