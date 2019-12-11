@@ -9,6 +9,11 @@ import { DbService } from "../services/db.service";
   styleUrls: ["./notes.component.css"]
 })
 export class NotesComponent implements OnInit {
+  //
+  loggedIn: boolean = false;
+  userName: string = "";
+  userId: number = 0;
+  //
   newNoteTitle = "";
   newNotePinned = false;
   newNoteContent = "";
@@ -22,12 +27,13 @@ export class NotesComponent implements OnInit {
 
   addNote() {
     // post note
+
     this.dbService
       .addNote({
         title: this.newNoteTitle,
         pinned: this.newNotePinned,
         content: this.newNoteContent,
-        userId: 42
+        userId: this.userId
       })
       .subscribe(() => {
         this.getNotes();
@@ -35,7 +41,7 @@ export class NotesComponent implements OnInit {
   }
   getNotes() {
     this.resultNotes = [];
-    this.dbService.getNotes().subscribe(data => {
+    this.dbService.getNotes(this.userId).subscribe(data => {
       this.resultNotes = data;
       for (let note of this.resultNotes) {
         this.editing.push(false);
@@ -80,11 +86,21 @@ export class NotesComponent implements OnInit {
       });
   }
   appear() {
-    console.log("you clicked");
-    this.visible = !this.visible;
-    console.log(this.visible);
+    if (!this.loggedIn) {
+      // alert("you must be logged in to make notes");
+    } else {
+      console.log("you clicked");
+      this.visible = !this.visible;
+      console.log(this.visible);
+    }
   }
   ngOnInit() {
+    let user = this.dbService.getUser();
+    if (user.loggedIn) {
+      this.loggedIn = user.loggedIn;
+      this.userId = user.userId;
+      this.userName = user.userName;
+    }
     this.getNotes();
   }
 }

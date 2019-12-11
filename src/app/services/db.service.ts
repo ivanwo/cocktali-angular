@@ -13,9 +13,9 @@ export class DbService {
 
   constructor(private http: HttpClient) {}
 
-  getNotes() {
+  getNotes(userId) {
     //TODO: GET NOTES
-    return this.http.get(this.BASE_URL + "/notes");
+    return this.http.get(this.BASE_URL + "/notes/" + userId);
   }
   addNote(note) {
     //TODO: ADD NOTE
