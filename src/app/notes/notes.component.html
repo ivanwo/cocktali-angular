@@ -13,28 +13,12 @@
   </div>
   <form (submit)="addNote()" [ngClass]="{ testing: visible }" class="addForm">
     <span (click)="appear()" class="close">X</span>
-    <input
-      class="note-title"
-      type="text"
-      name="newNoteTitle"
-      placeholder="Note Title!"
-      [(ngModel)]="newNoteTitle"
-    />
+    <input class="note-title" type="text" name="newNoteTitle" placeholder="Note Title!" [(ngModel)]="newNoteTitle" />
     <label for="newNotePinned"></label>
-    <textarea
-      class="note-body"
-      name="newNoteContent"
-      placeholder="place text here"
-      [(ngModel)]="newNoteContent"
-    >
+    <textarea class="note-body" name="newNoteContent" placeholder="place text here" [(ngModel)]="newNoteContent">
     </textarea>
     <button (click)="appear()" type="submit">submit</button>
-    <input
-      class="pinned-btn"
-      name="newNotePinned"
-      type="checkbox"
-      [(ngModel)]="newNotePinned"
-    />
+    <input class="pinned-btn" name="newNotePinned" type="checkbox" [(ngModel)]="newNotePinned" />
   </form>
 </div>
 
@@ -49,21 +33,14 @@
 
   <form (submit)="editNote(i, note.id)" *ngIf="editing[i]" class="editForm">
     <p>editor</p>
-    <input
-      class="title-edit"
-      type="text"
-      name="editNoteTitle"
-      placeholder="{{ note.title }}"
-      [(ngModel)]="editNoteTitle"
-    />
-    <input
-      class="content-edit"
-      type="text"
-      name="editNoteContent"
-      placeholder="{{ note.content }}"
-      [(ngModel)]="editNoteContent"
-    />
+    <input class="title-edit" type="text" name="editNoteTitle" placeholder="{{ note.title }}"
+      [(ngModel)]="editNoteTitle" />
+    <input class="content-edit" type="text" name="editNoteContent" placeholder="{{ note.content }}"
+      [(ngModel)]="editNoteContent" />
+    <label for="editNotePinned"></label>
+    <input class="edit-pinned-btn" name="editNotePinned" type="checkbox" [(ngModel)]="editNotePinned" />
     <button type="submit">FINISHED</button>
+    <button (click)="editing[i] = false">Cancel</button>
   </form>
 </div>
 <!-- <p>{{ visible }}</p> -->
