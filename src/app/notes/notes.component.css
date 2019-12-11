@@ -127,3 +127,36 @@ input:focus {
   flex-direction: row-reverse;
   justify-content: space-between;
 }
+
+.noteHolder {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.note {
+  margin-bottom: 0.25em;
+  width: 80vw;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.noteHeader {
+  display: flex;
+  /* flex-direction: row; */
+  border-bottom: 1px solid black;
+  justify-content: space-between;
+}
+.noteTitle {
+  margin: 0;
+}
+.noteContent {
+  margin: 0;
+  padding: 0.5em;
+}
+.pinButton {
+  border: none;
+  cursor: hover;
+}
+.pinned {
+  background: royalblue;
+}

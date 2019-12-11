@@ -94,6 +94,12 @@ export class NotesComponent implements OnInit {
       this.getNotes();
     });
   }
+  edit(i) {
+    this.editing[i] = true;
+    this.editNoteContent = this.resultNotes[i].content;
+    this.editNotePinned = this.resultNotes[i].pinned;
+    this.editNoteTitle = this.resultNotes[i].title;
+  }
 
   editNote(i, id) {
     console.log(this.editNoteTitle);
