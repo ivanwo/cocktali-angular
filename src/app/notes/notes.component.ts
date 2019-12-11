@@ -13,6 +13,7 @@ export class NotesComponent implements OnInit {
   newNotePinned = false;
   newNoteContent = "";
   resultNotes;
+  editing: boolean[] = [];
   constructor(private dbService: DbService, private http: HttpClient) {}
 
   addNote() {
@@ -32,6 +33,9 @@ export class NotesComponent implements OnInit {
     this.resultNotes = [];
     this.dbService.getNotes().subscribe(data => {
       this.resultNotes = data;
+      for (let note of this.resultNotes) {
+        this.editing.push(false);
+      }
       console.log(data);
       console.log(this.resultNotes);
     });
@@ -45,12 +49,9 @@ export class NotesComponent implements OnInit {
 
   editNote(note) {
     this.dbService.editNote(note).subscribe(data => {
-      this.newNoteTitle = note.title;
-      this.newNoteContent = note.content;
-      this.newNotePinned = note.pinned;
-      this.dbService.deleteNote(note.id).subscribe(data => {
-        this.resultNotes = data;
-      });
+      // this.newNoteTitle = note.title;
+      // this.newNoteContent = note.content;
+      // this.newNotePinned = note.pinned;
     });
   }
   ngOnInit() {
