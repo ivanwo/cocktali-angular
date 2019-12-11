@@ -11,9 +11,14 @@ export class SignUpInComponent implements OnInit {
   userPassword = "ivanpassword";
   userEmail = "ivan@ivan.me";
   userName = "n/a";
+  newUserName = "";
+  newUserEmail = "";
+  acctExists: boolean = false;
+  newUserPassword = "";
   userId = 0;
   loggedIn: boolean = false;
   signInFail: boolean = false;
+  signUpSuccess: boolean = false;
   constructor(private dbService: DbService) {}
 
   signMeIn() {
@@ -36,6 +41,22 @@ export class SignUpInComponent implements OnInit {
   }
   signMeUp() {
     //TODO: call service to sign up
+    this.acctExists = false;
+    let newUser = {
+      name: this.newUserName,
+      email: this.newUserEmail,
+      password: this.newUserPassword
+    };
+    this.dbService.signUp(newUser).subscribe(data => {
+      console.log(data);
+      this.signIn = 3;
+      this.userName = this.newUserName;
+      this.userPassword = this.newUserPassword;
+      this.userEmail = this.newUserEmail;
+      this.acctExists = false;
+      this.signUpSuccess = true;
+      this.signMeIn();
+    });
   }
 
   ngOnInit() {

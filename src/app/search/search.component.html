@@ -7,8 +7,16 @@
 <div *ngIf="loggedIn">
   Logged in as <a href="#">{{ userName }}</a>
 </div>
-<a routerLink="sign" *ngIf="!loggedIn">log in/ sign up</a>
+<a href="./sign" *ngIf="!loggedIn">log in/ sign up</a>
 <!-- sign in stuff -->
+<div class="blur" *ngIf="errorMsg">
+  <div class="errorMsg">
+    <h2>You must log in to save cocktails</h2>
+    <button (click)="toggleError()">I see</button>
+  </div>
+</div>
+
+<!--  -->
 <section class="formHolder">
   <form (submit)="cocktailSearch()">
     <select name="searchType" [(ngModel)]="searchType" class="searchType">

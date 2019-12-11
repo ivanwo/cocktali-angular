@@ -1,26 +1,43 @@
 <a href="#" *ngIf="loggedIn">Logged in as {{ userName }}</a>
-<form name="signInForm" action="" *ngIf="signIn === 0" (submit)="signMeIn()">
-  <label for="emailField">Email: </label>
-  <input
-    name="emailField"
-    type="email"
-    placeholder="example@me.com"
-    [(ngModel)]="userEmail"
-  />
-  <label for="passwordField">Password: </label>
-  <input name="passwordField" type="password" [(ngModel)]="userPassword" />
-  <button type="submit">Sign in</button>
-  <a (click)="signIn = 1">not a user yet?</a>
-</form>
-<form name="signUpForm" action="" *ngIf="signIn === 1" (submit)="signMeUp()">
-  <label for="nameField">Name: </label>
-  <input name="nameField" type="text" placeholder="Sarah" />
-  <label for="emailField">Email: </label>
-  <input name="emailField" type="email" placeholder="example@me.com" />
-  <label for="passwordField">Password: </label>
-  <input name="passwordField" type="password" />
-  <button type="submit">Sign me up</button>
-  <a (click)="signIn = 0">already a user?</a>
-</form>
-<h3 *ngIf="signInFail">SIGN IN FAILED</h3>
-<h3 *ngIf="signIn === 3">welcome, {{ userName }}.</h3>
+<section class="formHolder">
+  <form name="signInForm" action="" *ngIf="signIn === 0" (submit)="signMeIn()">
+    <div class="row">
+      <label for="emailField">Email: </label>
+      <input
+        name="emailField"
+        type="email"
+        placeholder="example@me.com"
+        [(ngModel)]="userEmail"
+      />
+    </div>
+    <div class="row">
+      <label for="passwordField">Password: </label>
+      <input name="passwordField" type="password" [(ngModel)]="userPassword" />
+    </div>
+    <button type="submit">Sign in</button>
+    <a (click)="signIn = 1">not a user yet?</a>
+  </form>
+  <form name="signUpForm" action="" *ngIf="signIn === 1" (submit)="signMeUp()">
+    <h3 *ngIf="acctExists">email already has account</h3>
+    <label for="nameField">Name: </label>
+    <input
+      name="nameField"
+      type="text"
+      placeholder="Sarah"
+      [(ngModel)]="newUserName"
+    />
+    <label for="emailField">Email: </label>
+    <input
+      name="emailField"
+      type="email"
+      placeholder="example@me.com"
+      [(ngModel)]="newUserEmail"
+    />
+    <label for="passwordField">Password: </label>
+    <input name="passwordField" type="password" [(ngModel)]="newUserPassword" />
+    <button type="submit">Sign me up</button>
+    <a (click)="signIn = 0">already a user?</a>
+  </form>
+  <h3 *ngIf="signInFail">SIGN IN FAILED</h3>
+  <h3 *ngIf="signIn === 3">welcome to Cocktali, {{ userName }}.</h3>
+</section>
