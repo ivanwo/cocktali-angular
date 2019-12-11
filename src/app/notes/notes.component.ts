@@ -50,11 +50,14 @@ export class NotesComponent implements OnInit {
     });
   }
 
-  editNote(note) {
+  editNote(i, id) {
+    console.log(this.editNoteTitle);
+    this.editing[i] = false;
     this.dbService
       .editNote({
         title: this.editNoteTitle,
         pinned: this.newNotePinned,
+        id: id,
         content: this.editNoteContent,
         userId: 42
       })

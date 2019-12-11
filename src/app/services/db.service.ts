@@ -28,6 +28,7 @@ export class DbService {
   }
   editNote(note) {
     //TODO: EDIT NOTE
+    console.log(note);
     return this.http.put(this.BASE_URL + "/notes/" + note.id, note);
   }
 

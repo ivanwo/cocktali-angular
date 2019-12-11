@@ -30,12 +30,13 @@
     <button (click)="deleteNote(note.id)">DELETE</button>
   </article>
 
-  <form (submit)="editNote(note)" *ngIf="editing[i]" class='editForm'>
+  <form (submit)="editNote(i, note.id)" *ngIf="editing[i]" class='editForm'>
     <p>editor</p>
-    <input class="title-edit" type="text" name="editNoteTitle" placeholder="Edit title" [(ngModel)]="editNoteTitle" />
-    <input class="content-edit" type="text" name="editNoteContent" placeholder="Edit content"
+    <input class="title-edit" type="text" name="editNoteTitle" placeholder='{{note.title}}'
+      [(ngModel)]="editNoteTitle" />
+    <input class="content-edit" type="text" name="editNoteContent" placeholder='{{note.content}}'
       [(ngModel)]="editNoteContent" />
-    <button type="submit" (click)="editing[i] = false">FINISHED</button>
+    <button type="submit">FINISHED</button>
   </form>
 </div>
 <p>{{ visible }}</p>
