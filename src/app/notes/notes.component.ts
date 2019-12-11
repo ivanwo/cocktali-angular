@@ -14,6 +14,7 @@ export class NotesComponent implements OnInit {
   newNoteContent = "";
   resultNotes;
   editing: boolean[] = [];
+  visible: boolean = false;
   constructor(private dbService: DbService, private http: HttpClient) {}
 
   addNote() {
@@ -53,6 +54,11 @@ export class NotesComponent implements OnInit {
       // this.newNoteContent = note.content;
       // this.newNotePinned = note.pinned;
     });
+  }
+  appear() {
+    console.log("you clicked");
+    this.visible = !this.visible;
+    console.log(this.visible);
   }
   ngOnInit() {
     this.getNotes();

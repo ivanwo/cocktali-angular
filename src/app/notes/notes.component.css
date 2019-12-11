@@ -79,3 +79,20 @@ input:focus {
   max-width: -webkit-fill-available;
   font-size: medium;
 }
+
+.addForm {
+  visibility: hidden;
+  ;
+}
+
+.testing {
+  visibility: visible;
+  width: 98%;
+  height: 66%;
+  background: #3d3d3d;
+  opacity: 1;
+  position: absolute;
+  top: 120px;
+  right: 3px;
+  padding-top: 12%;
+}
