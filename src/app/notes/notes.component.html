@@ -3,7 +3,8 @@
     <!-- <div class="" style="text-align: center;margin-top:5%">
       </div> -->
     <button class="add-btn" (click)="appear()">NEW</button>
-    <div class="sort-by">Sort By:
+    <div class="sort-by">
+      Sort By:
       <select>
         <option value="volvo">Volvo</option>
         <option value="alphabetical">Alphabetical</option>
@@ -20,6 +21,7 @@
     <input class="pinned-btn" name="newNotePinned" type="checkbox" [(ngModel)]="newNotePinned" />
   </form>
 </div>
+
 <div *ngFor="let note of resultNotes; index as i">
   <article *ngIf="!editing[i]">
     <h2>{{ note.title }}</h2>
@@ -27,11 +29,13 @@
     <button (click)="editing[i] = true">EDIT</button>
     <button (click)="deleteNote(note.id)">DELETE</button>
   </article>
-  <form *ngIf="editing[i]">
+
+  <form (submit)="editNote(note)" *ngIf="editing[i]" class='editForm'>
     <p>editor</p>
-    <input class="title-edit" type="text" name="editNoteTitle" placeholder="Edit title" />
-    <input class="content-edit" type="text" name="editNoteContent" placeholder="Edit content" />
-    <button (click)="editing[i] = false">FINISHED</button>
+    <input class="title-edit" type="text" name="editNoteTitle" placeholder="Edit title" [(ngModel)]="editNoteTitle" />
+    <input class="content-edit" type="text" name="editNoteContent" placeholder="Edit content"
+      [(ngModel)]="editNoteContent" />
+    <button type="submit" (click)="editing[i] = false">FINISHED</button>
   </form>
 </div>
-<p>{{visible}}</p>
+<p>{{ visible }}</p>

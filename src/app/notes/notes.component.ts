@@ -15,6 +15,8 @@ export class NotesComponent implements OnInit {
   resultNotes;
   editing: boolean[] = [];
   visible: boolean = false;
+  editNoteTitle = "";
+  editNoteContent = "";
   constructor(private dbService: DbService, private http: HttpClient) {}
 
   addNote() {
@@ -44,17 +46,24 @@ export class NotesComponent implements OnInit {
 
   deleteNote(noteId: number) {
     this.dbService.deleteNote(noteId).subscribe(() => {
-      this.getNotes;
+      this.getNotes();
     });
   }
 
   editNote(note) {
-    this.dbService.editNote(note).subscribe(() => {
-      // this.newNoteTitle = note.title;
-      // this.newNoteContent = note.content;
-      // this.newNotePinned = note.pinned;
-      this.getNotes();
-    });
+    this.dbService
+      .editNote({
+        title: this.editNoteTitle,
+        pinned: this.newNotePinned,
+        content: this.editNoteContent,
+        userId: 42
+      })
+      .subscribe(() => {
+        // this.newNoteTitle = note.title;
+        // this.newNoteContent = note.content;
+        // this.newNotePinned = note.pinned;
+        this.getNotes();
+      });
   }
   appear() {
     console.log("you clicked");
