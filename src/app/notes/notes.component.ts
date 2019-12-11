@@ -15,6 +15,7 @@ export class NotesComponent implements OnInit {
   resultNotes;
   editing: boolean[] = [];
   visible: boolean = false;
+  editNotePinned: boolean = this.newNotePinned;
   editNoteTitle = "";
   editNoteContent = "";
   constructor(private dbService: DbService, private http: HttpClient) {}
@@ -66,7 +67,7 @@ export class NotesComponent implements OnInit {
     this.dbService
       .editNote({
         title: this.editNoteTitle,
-        pinned: this.newNotePinned,
+        pinned: this.editNotePinned,
         id: id,
         content: this.editNoteContent,
         userId: 42

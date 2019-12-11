@@ -10,34 +10,20 @@
         <option value="alphabetical">Alphabetical</option>
       </select>
     </div>
+
   </div>
-  <form (submit)="addNote()" [ngClass]="{ testing: visible }" class="addForm">
-    <span (click)="appear()" class="close">X</span>
-    <input
-      class="note-title"
-      type="text"
-      name="newNoteTitle"
-      placeholder="Note Title!"
-      [(ngModel)]="newNoteTitle"
-    />
+  <form (submit)="addNote()" [ngClass]="{testing: visible}" class="addForm">
+    <div class="form-title">
+      <span (click)="appear()" class="close">X</span>
+      <input class="note-title" type="text" name="newNoteTitle" placeholder="Note Title!" [(ngModel)]="newNoteTitle" />
+    </div>
     <label for="newNotePinned"></label>
-    <textarea
-      class="note-body"
-      name="newNoteContent"
-      placeholder="place text here"
-      [(ngModel)]="newNoteContent"
-    >
-    </textarea>
-    <button (click)="appear()" type="submit">submit</button>
-    <input
-      class="pinned-btn"
-      name="newNotePinned"
-      type="checkbox"
-      [(ngModel)]="newNotePinned"
-    />
+    <textarea class="note-body" name="newNoteContent" placeholder="place text here" [(ngModel)]="newNoteContent">
+      </textarea>
+    <button class="submit-btn" (click)="appear()" type="submit">submit</button>
+    <input class="pinned-btn" name="newNotePinned" type="checkbox" [(ngModel)]="newNotePinned" />
   </form>
 </div>
-
 <div *ngFor="let note of resultNotes; index as i">
   <article *ngIf="!editing[i]">
     <p>pinned: {{ note.pinned }}</p>
@@ -49,21 +35,14 @@
 
   <form (submit)="editNote(i, note.id)" *ngIf="editing[i]" class="editForm">
     <p>editor</p>
-    <input
-      class="title-edit"
-      type="text"
-      name="editNoteTitle"
-      placeholder="{{ note.title }}"
-      [(ngModel)]="editNoteTitle"
-    />
-    <input
-      class="content-edit"
-      type="text"
-      name="editNoteContent"
-      placeholder="{{ note.content }}"
-      [(ngModel)]="editNoteContent"
-    />
+    <input class="title-edit" type="text" name="editNoteTitle" placeholder="{{ note.title }}"
+      [(ngModel)]="editNoteTitle" />
+    <input class="content-edit" type="text" name="editNoteContent" placeholder="{{ note.content }}"
+      [(ngModel)]="editNoteContent" />
+    <label for="editNotePinned"></label>
+    <input class="edit-pinned-btn" name="editNotePinned" type="checkbox" [(ngModel)]="editNotePinned" />
     <button type="submit">FINISHED</button>
+    <button (click)="editing[i] = false">Cancel</button>
   </form>
 </div>
 <!-- <p>{{ visible }}</p> -->
