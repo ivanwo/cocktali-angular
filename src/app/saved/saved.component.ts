@@ -36,6 +36,9 @@ export class SavedComponent implements OnInit {
       this.message = "Your Saved Cocktails";
       this.dbService.getFavs(this.userId).subscribe(datum => {
         this.favList = datum;
+        if (this.favList.length === 0) {
+          this.message = "You have no Saved Cocktails";
+        }
         // console.log(this.favList);
         for (let fav of this.favList) {
           // console.log(fav);

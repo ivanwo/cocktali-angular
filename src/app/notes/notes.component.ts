@@ -41,6 +41,9 @@ export class NotesComponent implements OnInit {
       }
       console.log(data);
       console.log(this.resultNotes);
+      //add pinned notes to the top
+      this.resultNotes.sort((a, b) => a.pinned - b.pinned);
+      this.resultNotes.reverse();
     });
   }
 
