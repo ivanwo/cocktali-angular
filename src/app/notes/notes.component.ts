@@ -43,8 +43,8 @@ export class NotesComponent implements OnInit {
   }
 
   deleteNote(noteId: number) {
-    this.dbService.deleteNote(noteId).subscribe(data => {
-      this.resultNotes = data;
+    this.dbService.deleteNote(noteId).subscribe(() => {
+      this.getNotes;
     });
   }
 

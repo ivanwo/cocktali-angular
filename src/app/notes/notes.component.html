@@ -11,11 +11,12 @@
     </div>
   </div>
   <form (submit)="addNote()" [ngClass]="{testing: visible}" class="addForm">
+    <span (click)="appear()" class="close">X</span>
     <input class="note-title" type="text" name="newNoteTitle" placeholder="Note Title!" [(ngModel)]="newNoteTitle" />
     <label for="newNotePinned"></label>
     <textarea class="note-body" name="newNoteContent" placeholder="place text here" [(ngModel)]="newNoteContent">
     </textarea>
-    <button type="submit">submit</button>
+    <button (click)="appear()" type="submit">submit</button>
     <input class="pinned-btn" name="newNotePinned" type="checkbox" [(ngModel)]="newNotePinned" />
   </form>
 </div>
