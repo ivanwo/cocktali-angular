@@ -46,6 +46,13 @@ export class NotesComponent implements OnInit {
       this.resultNotes.reverse();
     });
   }
+  sort() {
+    // this.resultNotes.sort((a, b) => a.title < b.title);
+    // alert("changed");
+
+    this.resultNotes.sort((a, b) => a.pinned - b.pinned);
+    // this.resultNotes.reverse();
+  }
 
   deleteNote(noteId: number) {
     this.dbService.deleteNote(noteId).subscribe(() => {
