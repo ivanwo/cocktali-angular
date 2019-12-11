@@ -9,9 +9,10 @@
     <button class="add-btn" (click)="appear()">NEW</button>
     <div class="sort-by">
       Sort By:
-      <select (change)="sort()">
-        <option value="volvo">Volvo</option>
-        <option value="alphabetical">Alphabetical</option>
+      <select (change)="sort()" name="sortMethod" [(ngModel)]="sortMethod">
+        <option value="">sort by</option>
+        <option value="chrono">Date Added</option>
+        <option value="alpha">Alphabetical</option>
       </select>
     </div>
   </div>

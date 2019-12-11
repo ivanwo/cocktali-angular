@@ -15,6 +15,7 @@ export class NotesComponent implements OnInit {
   userId: number = 0;
   //
   newNoteTitle = "";
+  sortMethod = "";
   newNotePinned = false;
   newNoteContent = "";
   resultNotes;
@@ -47,7 +48,7 @@ export class NotesComponent implements OnInit {
         this.editing.push(false);
       }
       console.log(data);
-      console.log(this.resultNotes);
+      // console.log(this.resultNotes);
       //add pinned notes to the top
       this.resultNotes.sort((a, b) => a.pinned - b.pinned);
       this.resultNotes.reverse();
@@ -56,8 +57,35 @@ export class NotesComponent implements OnInit {
   sort() {
     // this.resultNotes.sort((a, b) => a.title < b.title);
     // alert("changed");
+    if (this.sortMethod === "chrono") {
+      console.log("sorting by chrono");
+      // this.resultNotes.sort((a, b) => {
+      //   return a.id - b.id;
+      // });
+      //
+    } else if (this.sortMethod === "alpha") {
+      //
+      console.log("sorting by alpha");
 
-    this.resultNotes.sort((a, b) => a.pinned - b.pinned);
+      this.resultNotes.sort((a, b) => {
+        let aTitle = a.title.toLowerCase();
+        let bTitle = b.title.toLowerCase();
+        return aTitle < bTitle ? -1 : aTitle > bTitle ? 1 : 0;
+      });
+      // for (let i = 0; i < this.resultNotes.length; i++) {
+      //   console.log(this.resultNotes);
+      //   if (this.resultNotes[i].pinned) {
+      //     console.log(i + " pinned");
+      //     this.resultNotes.splice(1, 0, this.resultNotes[i]);
+      //     this.resultNotes.splice(this.resultNotes[i - 1], 1);
+      //   }
+      // }
+      // this.resultNotes.sort((a, b) => b.pinned - a.pinned);
+      // this.resultNotes.reverse();
+    } else {
+      // alert("how did you get here??");
+    }
+
     // this.resultNotes.reverse();
   }
 
@@ -95,7 +123,8 @@ export class NotesComponent implements OnInit {
     }
   }
   ngOnInit() {
-    let user = this.dbService.getUser();
+    // let user = this.dbService.getUser();
+    let user = { loggedIn: true, userId: 1, userName: "test" };
     if (user.loggedIn) {
       this.loggedIn = user.loggedIn;
       this.userId = user.userId;
