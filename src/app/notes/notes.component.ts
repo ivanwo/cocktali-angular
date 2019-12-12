@@ -19,6 +19,7 @@ export class NotesComponent implements OnInit {
   newNotePinned = false;
   newNoteContent = "";
   resultNotes;
+  pinnedNotes;
   editing: boolean[] = [];
   showingMore: boolean[] = [];
   visible: boolean = false;
@@ -43,6 +44,7 @@ export class NotesComponent implements OnInit {
   }
   getNotes() {
     this.resultNotes = [];
+    this.pinnedNotes = [];
     this.dbService.getNotes(this.userId).subscribe(data => {
       this.resultNotes = data;
       for (let note of this.resultNotes) {
@@ -56,27 +58,56 @@ export class NotesComponent implements OnInit {
       this.resultNotes.reverse();
     });
   }
+
   showMore(i) {
     this.showingMore[i] = !this.showingMore[i];
   }
   sort() {
+    this.pinnedNotes = [];
     // this.resultNotes.sort((a, b) => a.title < b.title);
     // alert("changed");
     if (this.sortMethod === "chrono") {
       console.log("sorting by chrono");
+      for (let i = 0; i < this.resultNotes.length; i++) {
+        if (this.resultNotes[i].pinned) {
+          console.log("found a pinned note" + i);
+
+          this.pinnedNotes.push(this.resultNotes[i]);
+          this.resultNotes.splice(i, 1);
+          i--;
+        }
+        this.resultNotes.sort((a, b) => {
+          return a.id - b.id;
+        });
+      }
+      this.resultNotes.reverse();
+      this.resultNotes = [...this.pinnedNotes, ...this.resultNotes];
+
       // this.resultNotes.sort((a, b) => {
       //   return a.id - b.id;
       // });
       //
     } else if (this.sortMethod === "alpha") {
-      //
+      // console.log(this.resultNotes);
       console.log("sorting by alpha");
+
+      for (let i = 0; i < this.resultNotes.length; i++) {
+        console.log(this.resultNotes[i]);
+        if (this.resultNotes[i].pinned) {
+          console.log("found a pinned note" + i);
+
+          this.pinnedNotes.push(this.resultNotes[i]);
+          this.resultNotes.splice(i, 1);
+          i--;
+        }
+      }
 
       this.resultNotes.sort((a, b) => {
         let aTitle = a.title.toLowerCase();
         let bTitle = b.title.toLowerCase();
         return aTitle < bTitle ? -1 : aTitle > bTitle ? 1 : 0;
       });
+      this.resultNotes = [...this.pinnedNotes, ...this.resultNotes];
       // for (let i = 0; i < this.resultNotes.length; i++) {
       //   console.log(this.resultNotes);
       //   if (this.resultNotes[i].pinned) {
