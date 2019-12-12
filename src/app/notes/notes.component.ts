@@ -144,8 +144,8 @@ export class NotesComponent implements OnInit {
     }
   }
   ngOnInit() {
-    let user = this.dbService.getUser();
-    // let user = { loggedIn: true, userId: 1, userName: "test" };
+    // let user = this.dbService.getUser();
+    let user = { loggedIn: true, userId: 1, userName: "test" };
     if (user.loggedIn) {
       this.loggedIn = user.loggedIn;
       this.userId = user.userId;
