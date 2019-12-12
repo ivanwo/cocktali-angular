@@ -1,18 +1,33 @@
 /* font-family: 'Oxygen', sans-serif;
 font-family: 'Cormorant Garamond', serif; */
+.addBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+.buttonBar {
+  display: flex;
+  justify-content: space-evenly;
+}
 .container {
-  padding: 10px;
-  margin: 10px;
+  /* padding: 10px;
+  margin: 10px; */
+  /* margin-left: 25px; */
+  width: 80vw;
+  max-width: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* border: 1px solid black; */
 
   /* height: 285px; */
 }
-
-.add-bar {
-  height: 30px;
-  display: flex;
-  margin: 10px;
-  align-items: center;
-  justify-content: space-between;
+.sortSelect {
+  border: 1px solid black;
+  height: 25px;
+  width: 85px;
+  border-radius: 5px;
 }
 
 .note-title {
@@ -30,7 +45,7 @@ font-family: 'Cormorant Garamond', serif; */
   border: 2px #afbaaf4d solid;
 }
 
-.add-btn {
+/* .add-btn {
   background: linear-gradient(
     132deg,
     rgba(255, 255, 255, 1) 0%,
@@ -42,9 +57,22 @@ font-family: 'Cormorant Garamond', serif; */
   border-radius: 5px;
   width: 65px;
   height: 35px;
+} */
+.add-btn {
+  border: 1px solid black;
+  height: 25px;
+  width: 80px;
+  font-weight: 700;
+  border-radius: 5px;
+  background-color: rgb(186, 228, 181);
+}
+.add-btn:focus {
+  outline-color: #e9e9e9;
+  outline-width: 8px;
+  outline-offset: -4px;
 }
 
-.sort-by {
+/* .sort-by {
   background: linear-gradient(
     132deg,
     rgba(255, 255, 255, 1) 0%,
@@ -60,13 +88,7 @@ font-family: 'Cormorant Garamond', serif; */
   align-items: center;
   justify-content: space-between;
   height: 43px;
-}
-
-.add-btn:focus {
-  outline-color: #e9e9e9;
-  outline-width: 8px;
-  outline-offset: -4px;
-}
+} */
 
 input:focus {
   outline-color: #c2e3d6;
@@ -149,6 +171,12 @@ input:focus {
   border: 1px solid black;
   border-radius: 2px;
 }
+.noteButton {
+  background: rgb(99, 173, 156);
+
+  border: 1px solid black;
+  border-radius: 2px;
+}
 .noteHeader {
   display: flex;
   /* flex-direction: row; */
@@ -165,8 +193,10 @@ input:focus {
 }
 .pinButton {
   border: none;
-  cursor: hover;
+  cursor: pointer;
+  background: none;
+  /* background: rgb(22, 120, 86); */
 }
 .pinned {
-  background: royalblue;
+  background: rgb(99, 173, 156);
 }

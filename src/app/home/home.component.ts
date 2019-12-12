@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     let user = this.dbService.getUser();
-    console.log(user);
+    // console.log(user);
     if (user.loggedIn) {
       this.loggedIn = user.loggedIn;
       this.userId = user.userId;

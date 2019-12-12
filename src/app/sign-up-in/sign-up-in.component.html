@@ -8,6 +8,7 @@
         type="email"
         placeholder="example@me.com"
         [(ngModel)]="userEmail"
+        email
       />
     </div>
     <div class="row">
@@ -32,6 +33,7 @@
       type="email"
       placeholder="example@me.com"
       [(ngModel)]="newUserEmail"
+      email
     />
     <label for="passwordField">Password: </label>
     <input name="passwordField" type="password" [(ngModel)]="newUserPassword" />

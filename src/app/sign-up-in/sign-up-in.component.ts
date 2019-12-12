@@ -8,8 +8,8 @@ import { DbService } from "../services/db.service";
 })
 export class SignUpInComponent implements OnInit {
   signIn: number = 0;
-  userPassword = "ivanpassword";
-  userEmail = "ivan@ivan.me";
+  userPassword = "";
+  userEmail = "";
   userName = "n/a";
   newUserName = "";
   newUserEmail = "";
@@ -19,6 +19,7 @@ export class SignUpInComponent implements OnInit {
   loggedIn: boolean = false;
   signInFail: boolean = false;
   signUpSuccess: boolean = false;
+
   constructor(private dbService: DbService) {}
 
   signMeIn() {

@@ -28,7 +28,7 @@ export class DbService {
   }
   editNote(note) {
     //TODO: EDIT NOTE
-    console.log(note);
+    // console.log(note);
     return this.http.put(this.BASE_URL + "/notes/" + note.id, note);
   }
 
@@ -62,9 +62,17 @@ export class DbService {
     // to do: specify what it returns above
     let body = { email: email, password: password };
     return this.http.post(`${this.BASE_URL}/login`, body);
+    //
+    //  TODO: ON LOGIN SET LOCALSTORAGE DATA
+    //  localStorage.getItem();
+    //
   }
   signUp(newUser) {
     return this.http.post(`${this.BASE_URL}/signup`, { newUser });
+    //
+    //  TODO: ON LOGIN SET LOCALSTORAGE DATA
+    //  localStorage.getItem();
+    //
     //
   }
   setUser(userName: string, userId: number, loggedIn: boolean) {
@@ -73,6 +81,14 @@ export class DbService {
     this.loggedIn = loggedIn;
   }
   getUser() {
+    //
+    //  TODO: add localStorage to track recent login,
+    //  {loggedInTime: date(), loggedInName: this.userName, loggedInId: this.userId }
+    //  NOTE: DON'T SAVE PASSWORD TO LOCALSTORAGE
+    //
+    //  if( login within 24 hours, don't prompt for login info)
+    //  else if (login outside 24 hours, delete localStorage and prompt user to login)
+    //
     return {
       userId: this.userId,
       userName: this.userName,

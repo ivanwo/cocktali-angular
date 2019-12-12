@@ -51,7 +51,7 @@ export class NotesComponent implements OnInit {
         this.editing.push(false);
         this.showingMore.push(false);
       }
-      console.log(data);
+      // console.log(data);
       // console.log(this.resultNotes);
       //add pinned notes to the top
       this.resultNotes.sort((a, b) => a.pinned - b.pinned);
@@ -64,13 +64,11 @@ export class NotesComponent implements OnInit {
   }
   sort() {
     this.pinnedNotes = [];
-    // this.resultNotes.sort((a, b) => a.title < b.title);
-    // alert("changed");
     if (this.sortMethod === "chrono") {
       console.log("sorting by chrono");
       for (let i = 0; i < this.resultNotes.length; i++) {
         if (this.resultNotes[i].pinned) {
-          console.log("found a pinned note" + i);
+          // console.log("found a pinned note" + i);
 
           this.pinnedNotes.push(this.resultNotes[i]);
           this.resultNotes.splice(i, 1);
@@ -82,19 +80,13 @@ export class NotesComponent implements OnInit {
       }
       this.resultNotes.reverse();
       this.resultNotes = [...this.pinnedNotes, ...this.resultNotes];
-
-      // this.resultNotes.sort((a, b) => {
-      //   return a.id - b.id;
-      // });
-      //
     } else if (this.sortMethod === "alpha") {
-      // console.log(this.resultNotes);
       console.log("sorting by alpha");
 
       for (let i = 0; i < this.resultNotes.length; i++) {
-        console.log(this.resultNotes[i]);
+        // console.log(this.resultNotes[i]);
         if (this.resultNotes[i].pinned) {
-          console.log("found a pinned note" + i);
+          // console.log("found a pinned note" + i);
 
           this.pinnedNotes.push(this.resultNotes[i]);
           this.resultNotes.splice(i, 1);
@@ -108,16 +100,6 @@ export class NotesComponent implements OnInit {
         return aTitle < bTitle ? -1 : aTitle > bTitle ? 1 : 0;
       });
       this.resultNotes = [...this.pinnedNotes, ...this.resultNotes];
-      // for (let i = 0; i < this.resultNotes.length; i++) {
-      //   console.log(this.resultNotes);
-      //   if (this.resultNotes[i].pinned) {
-      //     console.log(i + " pinned");
-      //     this.resultNotes.splice(1, 0, this.resultNotes[i]);
-      //     this.resultNotes.splice(this.resultNotes[i - 1], 1);
-      //   }
-      // }
-      // this.resultNotes.sort((a, b) => b.pinned - a.pinned);
-      // this.resultNotes.reverse();
     } else {
       // alert("how did you get here??");
     }
@@ -149,9 +131,6 @@ export class NotesComponent implements OnInit {
         userId: this.userId
       })
       .subscribe(() => {
-        // this.newNoteTitle = note.title;
-        // this.newNoteContent = note.content;
-        // this.newNotePinned = note.pinned;
         this.getNotes();
       });
   }
@@ -165,8 +144,8 @@ export class NotesComponent implements OnInit {
     }
   }
   ngOnInit() {
-    // let user = this.dbService.getUser();
-    let user = { loggedIn: true, userId: 1, userName: "test" };
+    let user = this.dbService.getUser();
+    // let user = { loggedIn: true, userId: 1, userName: "test" };
     if (user.loggedIn) {
       this.loggedIn = user.loggedIn;
       this.userId = user.userId;

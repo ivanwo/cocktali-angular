@@ -3,15 +3,20 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  flex-direction: column;
 }
 .homeLink {
-  width: 80vw;
   text-align: center;
+
+  width: 80vw;
+  max-width: 500px;
   text-decoration: none;
   margin-top: 0.25em;
+  flex-direction: row;
   cursor: pointer;
   height: 50px;
   border: 2px solid black;
+  max-width: 700px;
   border-radius: 25px;
   font-size: 2.5em;
 }
