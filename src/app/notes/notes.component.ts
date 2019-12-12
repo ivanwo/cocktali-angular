@@ -20,6 +20,7 @@ export class NotesComponent implements OnInit {
   newNoteContent = "";
   resultNotes;
   editing: boolean[] = [];
+  showingMore: boolean[] = [];
   visible: boolean = false;
   editNotePinned: boolean = this.newNotePinned;
   editNoteTitle = "";
@@ -46,6 +47,7 @@ export class NotesComponent implements OnInit {
       this.resultNotes = data;
       for (let note of this.resultNotes) {
         this.editing.push(false);
+        this.showingMore.push(false);
       }
       console.log(data);
       // console.log(this.resultNotes);
@@ -53,6 +55,9 @@ export class NotesComponent implements OnInit {
       this.resultNotes.sort((a, b) => a.pinned - b.pinned);
       this.resultNotes.reverse();
     });
+  }
+  showMore(i) {
+    this.showingMore[i] = !this.showingMore[i];
   }
   sort() {
     // this.resultNotes.sort((a, b) => a.title < b.title);
@@ -99,10 +104,10 @@ export class NotesComponent implements OnInit {
     this.editNoteContent = this.resultNotes[i].content;
     this.editNotePinned = this.resultNotes[i].pinned;
     this.editNoteTitle = this.resultNotes[i].title;
+    console.log(0);
   }
 
   editNote(i, id) {
-    console.log(this.editNoteTitle);
     this.editing[i] = false;
     this.dbService
       .editNote({
@@ -110,7 +115,7 @@ export class NotesComponent implements OnInit {
         pinned: this.editNotePinned,
         id: id,
         content: this.editNoteContent,
-        userId: 42
+        userId: this.userId
       })
       .subscribe(() => {
         // this.newNoteTitle = note.title;

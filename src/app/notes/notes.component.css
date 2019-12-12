@@ -131,18 +131,28 @@ input:focus {
 .noteHolder {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 }
-
+.content-edit {
+  width: 97%;
+}
+.title-edit {
+  width: 99%;
+}
 .note {
   margin-bottom: 0.25em;
+  background-color: white;
   width: 80vw;
+  max-width: 700px;
   border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 2px;
 }
 .noteHeader {
   display: flex;
   /* flex-direction: row; */
+  background-color: rgb(186, 228, 181);
   border-bottom: 1px solid black;
   justify-content: space-between;
 }
