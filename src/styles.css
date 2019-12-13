@@ -1,20 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-.logo {
-  width: 100px;
-}
-header {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-body {
-  background: rgb(239, 249, 238);
-}
 * {
-  font-family: sans-serif;
-}
-a,
-h2 {
-  /* color: rgb(99, 173, 156); */
-  color: rgb(22, 120, 86);
+  padding: 0;
+  margin: 0;
 }

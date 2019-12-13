@@ -1,4 +1,4 @@
-<div *ngIf="loggedIn">
+<div class="login-bar" *ngIf="loggedIn">
   Logged in as <a href="#">{{ userName }}</a>
 </div>
 <a href="./sign" *ngIf="!loggedIn">log in/ sign up</a>
@@ -27,6 +27,7 @@
     </textarea>
     <div class="form-sends">
       <button class="submit-btn" (click)="appear()" type="submit">submit</button>
+
       <input class="pinned-btn" name="newNotePinned" type="checkbox" [(ngModel)]="newNotePinned" />
     </div>
   </form>

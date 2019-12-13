@@ -232,3 +232,8 @@ a:-webkit-any-link {
 input[type="checkbox"i] {
   margin: 10px;
 }
+
+.login-bar {
+  font-size: large;
+
+}
