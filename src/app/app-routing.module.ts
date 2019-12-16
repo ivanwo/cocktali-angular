@@ -7,8 +7,8 @@ import { SavedComponent } from "./saved/saved.component";
 import { SignUpInComponent } from "./sign-up-in/sign-up-in.component";
 
 const routes: Routes = [
-  { path: "", component: HomeComponent },
-  { path: "search", component: SearchComponent },
+  { path: "", component: SearchComponent },
+  { path: "search", redirectTo: "" },
   { path: "notes", component: NotesComponent },
   { path: "saved", component: SavedComponent },
   { path: "sign", component: SignUpInComponent },

@@ -1,0 +1,55 @@
+.logo {
+  width: 50px;
+}
+header {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* z-index: 2000; */
+  background-color: lightgray;
+  border-bottom: 1px solid black;
+}
+.userDisp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+  text-decoration: none;
+}
+.userDisp span {
+  padding-left: 10px;
+}
+.spacer {
+  /* 
+        THE SPACER IS TO MAKE SURE NOTHING DISAPPEARS BEHIND
+        THE NAV BARS
+*/
+  height: 55px;
+}
+/*
+    TO DO: TOGGLE CLASS BASED ON CURRENT PAGE
+ */
+.currentPage {
+  background-color: white;
+}
+.footerNav {
+  /* width: 100vw; */
+  position: fixed;
+  display: flex;
+  justify-content: space-around;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: lightgray;
+  border-top: 1px solid black;
+}
+.homeLink {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}

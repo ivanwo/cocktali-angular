@@ -1,6 +1,8 @@
-/* font-family: 'Oxygen', sans-serif;
-font-family: 'Cormorant Garamond', serif; */
-.add-bar {
+.thing {
+  margin: 0 auto;
+  width: 80vw;
+}
+.addBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,15 +17,11 @@ font-family: 'Cormorant Garamond', serif; */
 }
 
 .container {
-  /* padding: 10px;
-  margin: 10px; */
-  /* margin-left: 25px; */
   max-width: 700px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-
 
 .sortSelect {
   border: 1px solid black;
@@ -47,19 +45,6 @@ font-family: 'Cormorant Garamond', serif; */
   border: 2px #afbaaf4d solid;
 }
 
-/* .add-btn {
-  background: linear-gradient(
-    132deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(237, 255, 242, 1) 100%
-  );
-  font-family: "Cormorant Garamond", serif;
-  color: #6868b6;
-  height: 15px;
-  border-radius: 5px;
-  width: 65px;
-  height: 35px;
-} */
 .add-btn {
   border: 1px solid black;
   height: 25px;
@@ -74,24 +59,6 @@ font-family: 'Cormorant Garamond', serif; */
   outline-width: 8px;
   outline-offset: -4px;
 }
-
-/* .sort-by {
-  background: linear-gradient(
-    132deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(237, 255, 242, 1) 100%
-  );
-  font-family: "Cormorant Garamond", serif;
-  color: #6868b6;
-  height: 15px;
-  border-radius: 5px;
-  width: 106px;
-  display: flex;
-  margin: 10px;
-  align-items: center;
-  justify-content: space-between;
-  height: 43px;
-} */
 
 input:focus {
   outline-color: #c2e3d6;
@@ -117,6 +84,7 @@ input:focus {
 .addForm {
   visibility: hidden;
   position: absolute;
+  /* max-width: 700px; */
   /* display: absolute; */
 }
 
@@ -218,7 +186,7 @@ a:-webkit-any-link {
   background: #a8bd6b73;
 
   cursor: pointer;
-  text-decoration: none
+  text-decoration: none;
 }
 
 .form-sends {
@@ -226,7 +194,6 @@ a:-webkit-any-link {
   justify-content: center;
   margin: 5px;
   padding: 2px;
-
 }
 
 input[type="checkbox"i] {
@@ -235,5 +202,4 @@ input[type="checkbox"i] {
 
 .login-bar {
   font-size: large;
-
 }

@@ -1,7 +1,35 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 <header>
   <a routerLink="./">
-    <!-- <img src="../assets/cocktali_logo_v1_.png" class="logo" alt="" /> -->
+    <img src="../assets/cocktali_logo_v1_.png" class="logo" alt="" />
+  </a>
+  <a routerLink="sign" class="userDisp">
+    <i class="material-icons">account_circle</i>
+    <span *ngIf="!loggedIn">{{ user.userName }}</span>
+    <span *ngIf="loggedIn">{{ user.userName }}</span>
   </a>
 </header>
-<router-outlet></router-outlet>
+<!-- spacer div ensures nothing is hidden hebind the header -->
+<div class="spacer"></div>
+
+<router-outlet>
+  <!-- ROUTER OUTLET PUTS PAGES HERE -->
+</router-outlet>
+
+<!-- spacer div ensures nothing is hidden hebind the nav -->
+<div class="spacer"></div>
+
+<nav class="footerNav">
+  <a routerLink="search" class="homeLink">
+    <i class="material-icons">search</i>
+    <span> search </span>
+  </a>
+  <a routerLink="notes" class="homeLink">
+    <i class="material-icons">insert_drive_file</i>
+    <span>notes</span>
+  </a>
+  <a routerLink="saved" class="homeLink">
+    <i class="material-icons">local_bars</i>
+    <span>saved</span>
+  </a>
+</nav>

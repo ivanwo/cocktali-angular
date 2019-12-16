@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { DbService } from "../services/db.service";
+import { format } from "url";
 
 @Component({
   selector: "app-notes",
@@ -40,6 +41,9 @@ export class NotesComponent implements OnInit {
       })
       .subscribe(() => {
         this.getNotes();
+        this.newNoteTitle = "";
+        this.newNoteContent = "";
+        this.newNotePinned = false;
       });
   }
   getNotes() {
