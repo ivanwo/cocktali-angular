@@ -141,6 +141,9 @@ export class SearchComponent implements OnInit {
       // alert("please sign up to save favorites");
       this.toggleError();
     } else {
+      console.log(
+        "adding fav from component " + cocktailId + " " + this.userId
+      );
       this.dbService.addFav(cocktailId, this.userId).subscribe();
     }
   }

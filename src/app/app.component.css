@@ -1,6 +1,15 @@
+/* .linkyboy {
+  max-height: 50px;
+} */
 .logo {
   width: 50px;
   filter: invert(100%);
+}
+.logo-text {
+  position: fixed;
+  top: -25px;
+  left: 50px;
+  height: 100px;
 }
 header {
   position: fixed;
@@ -13,7 +22,7 @@ header {
   /* z-index: 2000; */
   /* background-color: lightgray; */
   background-color: #be2038;
-  border-bottom: 1px solid black;
+  /* border-bottom: 1px solid black; */
 }
 .userDisp {
   display: flex;
@@ -50,7 +59,7 @@ header {
   /* background-color: lightgray; */
   background-color: #be2038;
 
-  border-top: 1px solid black;
+  /* border-top: 1px solid black; */
 }
 .homeLink {
   margin: 10px 0;

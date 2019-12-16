@@ -48,10 +48,10 @@ export class DbService {
     // add filter send user Id to only get favs from that user
   }
   addFav(cocktailId, userId) {
-    // console.log("saving " + cocktailId + " at DbService ");
+    console.log("saving " + cocktailId + " at DbService " + userId);
     return this.http.post(this.BASE_URL + "/favs", {
       cocktailId: cocktailId,
-      userId: this.userId
+      userId: userId
     });
   }
   deleteFav(savedId) {
