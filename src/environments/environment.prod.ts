@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  cocktaliBaseUrl: "https://cocktali-express.herokuapp.com"
 };
