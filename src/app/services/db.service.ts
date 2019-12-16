@@ -1,15 +1,18 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Observable, Subject } from "rxjs";
 
 @Injectable({
   providedIn: "root"
 })
 export class DbService {
   BASE_URL = "http://localhost:3000";
+  user = { userId: 0, userName: "" };
   userId: number = 0;
   userName: string = "";
   loggedIn: boolean = false;
+
+  private subject = new Subject<any>();
 
   constructor(private http: HttpClient) {}
 
@@ -76,9 +79,17 @@ export class DbService {
     //
   }
   setUser(userName: string, userId: number, loggedIn: boolean) {
-    this.userName = userName;
-    this.userId = userId;
+    this.user.userId = userId;
+    this.user.userName = userName;
+    // this.userName = userName;
+    // this.userId = userId;
     this.loggedIn = loggedIn;
+  }
+  sendUser(user) {
+    this.subject.next(this.user);
+  }
+  newGetUser() {
+    return this.subject.asObservable();
   }
   getUser() {
     //
@@ -90,8 +101,8 @@ export class DbService {
     //  else if (login outside 24 hours, delete localStorage and prompt user to login)
     //
     return {
-      userId: this.userId,
-      userName: this.userName,
+      userId: this.user.userId,
+      userName: this.user.userName,
       loggedIn: this.loggedIn
     };
   }

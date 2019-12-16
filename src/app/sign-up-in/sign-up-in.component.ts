@@ -19,6 +19,7 @@ export class SignUpInComponent implements OnInit {
   loggedIn: boolean = false;
   signInFail: boolean = false;
   signUpSuccess: boolean = false;
+  signUpFail: boolean = false;
 
   constructor(private dbService: DbService) {}
 
@@ -37,27 +38,46 @@ export class SignUpInComponent implements OnInit {
         this.loggedIn = true;
         console.log(this.userName + " : " + this.userId);
         this.dbService.setUser(this.userName, this.userId, this.loggedIn);
+        //
+        // sendUser sends the user object to the main app component
+        //
+        this.dbService.sendUser({
+          userName: this.userName,
+          userId: this.userId
+        });
       }
     });
   }
   signMeUp() {
     //TODO: call service to sign up
     this.acctExists = false;
-    let newUser = {
-      name: this.newUserName,
-      email: this.newUserEmail,
-      password: this.newUserPassword
-    };
-    this.dbService.signUp(newUser).subscribe(data => {
-      console.log(data);
-      this.signIn = 3;
-      this.userName = this.newUserName;
-      this.userPassword = this.newUserPassword;
-      this.userEmail = this.newUserEmail;
-      this.acctExists = false;
-      this.signUpSuccess = true;
-      this.signMeIn();
-    });
+    // basically, only even try to make an account if they've actually filled out the form
+    if (
+      this.newUserEmail !== "" &&
+      this.newUserName !== "" &&
+      this.newUserPassword !== ""
+    ) {
+      let newUser = {
+        name: this.newUserName,
+        email: this.newUserEmail,
+        password: this.newUserPassword
+      };
+      this.dbService.signUp(newUser).subscribe(data => {
+        console.log(data);
+        this.signIn = 3;
+        this.signUpFail = false;
+        this.userName = this.newUserName;
+        this.userPassword = this.newUserPassword;
+        this.userEmail = this.newUserEmail;
+        this.acctExists = false;
+        this.signUpSuccess = true;
+        this.signMeIn();
+      });
+    } else {
+      //
+      this.signUpFail = true;
+      //
+    }
   }
 
   ngOnInit() {

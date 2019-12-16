@@ -1,117 +1,117 @@
-<div *ngIf="loggedIn">
-  Logged in as <a href="#">{{ userName }}</a>
-</div>
-<a href="./sign" *ngIf="!loggedIn">log in/ sign up</a>
-<div class="addBar">
-  <div class="container">
-    <button class="add-btn" (click)="appear()">NEW</button>
-    <div class="sortBy">
-      Sort By:
-      <select
-        (change)="sort()"
-        name="sortMethod"
-        [(ngModel)]="sortMethod"
-        class="sortSelect"
-      >
-        <option value="">sort by</option>
-        <option class="opt" value="chrono">Date Added</option>
-        <option value="alpha">Alphabetical</option>
-      </select>
+<section class="page">
+  <div class="addBar">
+    <div class="container">
+      <button class="add-btn" (click)="appear()">NEW</button>
+      <div class="sortBy">
+        Sort By:
+        <select
+          (change)="sort()"
+          name="sortMethod"
+          [(ngModel)]="sortMethod"
+          class="sortSelect"
+        >
+          <option value="">sort by</option>
+          <option class="opt" value="chrono">Date Added</option>
+          <option value="alpha">Alphabetical</option>
+        </select>
+      </div>
     </div>
-  </div>
 
-  <!-- 
+    <!-- 
       NOTE ADDING FORM AHEAD
 
    -->
-  <form (submit)="addNote()" [ngClass]="{ testing: visible }" class="addForm">
-    <div class="form-title">
-      <span (click)="appear()" class="close">X</span>
+    <form (submit)="addNote()" [ngClass]="{ testing: visible }" class="addForm">
+      <div class="form-title">
+        <span (click)="appear()" class="close">X</span>
+        <input
+          class="note-title"
+          type="text"
+          name="newNoteTitle"
+          placeholder="Note Title!"
+          [(ngModel)]="newNoteTitle"
+        />
+      </div>
+      <label for="newNotePinned"></label>
+      <textarea
+        class="note-body"
+        name="newNoteContent"
+        placeholder="place text here"
+        [(ngModel)]="newNoteContent"
+      >
+      </textarea>
+      <button class="submit-btn" (click)="appear()" type="submit">
+        submit
+      </button>
       <input
-        class="note-title"
-        type="text"
-        name="newNoteTitle"
-        placeholder="Note Title!"
-        [(ngModel)]="newNoteTitle"
+        class="pinned-btn"
+        name="newNotePinned"
+        type="checkbox"
+        [(ngModel)]="newNotePinned"
       />
-    </div>
-    <label for="newNotePinned"></label>
-    <textarea
-      class="note-body"
-      name="newNoteContent"
-      placeholder="place text here"
-      [(ngModel)]="newNoteContent"
-    >
-    </textarea>
-    <button class="submit-btn" (click)="appear()" type="submit">submit</button>
-    <input
-      class="pinned-btn"
-      name="newNotePinned"
-      type="checkbox"
-      [(ngModel)]="newNotePinned"
-    />
-  </form>
-</div>
-<!-- 
+    </form>
+  </div>
+  <!-- 
          NOTES DISPLAYED BELOW
  -->
-<h2 *ngIf="!loggedIn">You must be logged in to make notes!</h2>
+  <h2 *ngIf="!loggedIn">You must be logged in to make notes!</h2>
 
-<section class="noteHolder">
-  <div *ngFor="let note of resultNotes; index as i">
-    <!-- this is the actual note on the page -->
-    <article *ngIf="!editing[i]" class="note">
-      <!-- <p>pinned: {{ note.pinned }}</p> -->
-      <section class="noteHeader">
-        <button class="pinButton" [ngClass]="{ pinned: note.pinned }">
-          📌
-        </button>
-        <h2 class="noteTitle">{{ note.title }}</h2>
-        <button (click)="showMore(i)" class="noteButton">more</button>
-        <!-- <span>{{ note.added }}</span> -->
-      </section>
-      <section class="noteBody" *ngIf="showingMore[i]">
-        <p class="noteContent">{{ note.content }}</p>
-        <section class="buttonBar">
-          <button class="noteButton" (click)="edit(i)">EDIT</button>
-          <button class="noteButton" (click)="deleteNote(note.id)">
-            DELETE
+  <section class="noteHolder">
+    <div *ngFor="let note of resultNotes; index as i">
+      <!-- this is the actual note on the page -->
+      <article *ngIf="!editing[i]" class="note">
+        <!-- <p>pinned: {{ note.pinned }}</p> -->
+        <section class="noteHeader">
+          <button class="pinButton" [ngClass]="{ pinned: note.pinned }">
+            📌
           </button>
+          <h2 class="noteTitle">{{ note.title }}</h2>
+          <button (click)="showMore(i)" class="noteButton">more</button>
+          <!-- <span>{{ note.added }}</span> -->
         </section>
-      </section>
-    </article>
-    <!-- that was the actual note on the page -->
-    <!-- this is the note editor on the page. -->
-    <form (submit)="editNote(i, note.id)" *ngIf="editing[i]" class="note">
-      <section class="noteHeader">
-        <!-- <label for="editNotePinned">Pinned:</label> -->
-        <input
-          class="edit-pinned-btn"
-          name="editNotePinned"
-          type="checkbox"
-          [(ngModel)]="editNotePinned"
-        />
-        <input
-          class="title-edit"
-          type="text"
-          name="editNoteTitle"
-          placeholder="{{ note.title }}"
-          [(ngModel)]="editNoteTitle"
-        />
-      </section>
-      <section class="noteBody">
-        <textarea
-          name="editNoteContent"
-          cols="35"
-          rows="5"
-          [(ngModel)]="editNoteContent"
-          class="content-edit"
-        ></textarea>
+        <section class="noteBody" *ngIf="showingMore[i]">
+          <p class="noteContent">{{ note.content }}</p>
+          <section class="buttonBar">
+            <button class="noteButton" (click)="edit(i)">EDIT</button>
+            <button class="noteButton" (click)="deleteNote(note.id)">
+              DELETE
+            </button>
+          </section>
+        </section>
+      </article>
+      <!-- that was the actual note on the page -->
+      <!-- this is the note editor on the page. -->
+      <form (submit)="editNote(i, note.id)" *ngIf="editing[i]" class="note">
+        <section class="noteHeader">
+          <!-- <label for="editNotePinned">Pinned:</label> -->
+          <input
+            class="edit-pinned-btn"
+            name="editNotePinned"
+            type="checkbox"
+            [(ngModel)]="editNotePinned"
+          />
+          <input
+            class="title-edit"
+            type="text"
+            name="editNoteTitle"
+            placeholder="{{ note.title }}"
+            [(ngModel)]="editNoteTitle"
+          />
+        </section>
+        <section class="noteBody">
+          <textarea
+            name="editNoteContent"
+            cols="35"
+            rows="5"
+            [(ngModel)]="editNoteContent"
+            class="content-edit"
+          ></textarea>
 
-        <button type="submit">FINISHED</button>
-        <button (click)="editing[i] = false">Cancel</button>
-      </section>
-    </form>
-    <!-- that was the actual login on the page -->
-  </div>
+          <button type="submit">FINISHED</button>
+          <button (click)="editing[i] = false">Cancel</button>
+        </section>
+      </form>
+      <!-- that was the actual login on the page -->
+    </div>
+  </section>
 </section>

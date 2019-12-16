@@ -1,5 +1,13 @@
 /* font-family: 'Oxygen', sans-serif;
 font-family: 'Cormorant Garamond', serif; */
+/* .page {
+  max-width: 80vw;
+  margin: 0 auto;
+} */
+.thing {
+  margin: 0 auto;
+  width: 80vw;
+}
 .addBar {
   display: flex;
   justify-content: center;
@@ -114,6 +122,7 @@ input:focus {
 .addForm {
   visibility: hidden;
   position: absolute;
+  /* max-width: 700px; */
   /* display: absolute; */
 }
 

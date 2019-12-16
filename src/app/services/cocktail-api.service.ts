@@ -14,7 +14,7 @@ export class CocktailAPIService {
   searchById(id): Observable<any> {
     return this.http.get(`${BASE_URL}/${API_KEY}/lookup.php?`, {
       params: {
-        i: id
+        i: id 
       }
     });
   }
