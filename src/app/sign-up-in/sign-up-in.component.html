@@ -1,24 +1,20 @@
 <section class="formHolder">
   <form name="signInForm" action="" *ngIf="signIn === 0" (submit)="signMeIn()">
-    <div class="row">
-      <!-- <label for="emailField">Email: </label> -->
-      <input
-        name="emailField"
-        type="email"
-        placeholder=" e m a i l "
-        [(ngModel)]="userEmail"
-        email
-      />
-    </div>
-    <div class="row">
-      <!-- <label for="passwordField">Password: </label> -->
-      <input
-        name="passwordField"
-        type="password"
-        placeholder=" p a s s w o r d "
-        [(ngModel)]="userPassword"
-      />
-    </div>
+    <!-- <label for="emailField">Email: </label> -->
+    <input
+      name="emailField"
+      type="email"
+      placeholder=" e m a i l "
+      [(ngModel)]="userEmail"
+      email
+    />
+    <!-- <label for="passwordField">Password: </label> -->
+    <input
+      name="passwordField"
+      type="password"
+      placeholder=" p a s s w o r d "
+      [(ngModel)]="userPassword"
+    />
     <button type="submit">Sign in</button>
     <a (click)="signIn = 1">not a user yet?</a>
   </form>

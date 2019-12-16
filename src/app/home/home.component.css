@@ -1,8 +1,16 @@
+@media screen and (min-width: 700px) {
+  .body {
+    /*  */
+    visibility: visible;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+}
+
 .body {
-  height: 100%;
-  padding: 0;
-  margin: 0;
-  width: 100%;
+  visibility: hidden;
 }
 
 #myVideo {

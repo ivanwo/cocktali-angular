@@ -25,28 +25,34 @@ export class SignUpInComponent implements OnInit {
 
   signMeIn() {
     //TODO: call service to sign in
-    this.dbService.login(this.userEmail, this.userPassword).subscribe(data => {
-      if (data === null) {
-        // alert("failure to log in");
-        this.signInFail = true;
-      } else {
-        // right now this just assumes the signin was successful
-        this.signInFail = false;
-        this.userName = data[0].name;
-        this.userId = data[0].id;
-        this.signIn = 3;
-        this.loggedIn = true;
-        console.log(this.userName + " : " + this.userId);
-        this.dbService.setUser(this.userName, this.userId, this.loggedIn);
-        //
-        // sendUser sends the user object to the main app component
-        //
-        this.dbService.sendUser({
-          userName: this.userName,
-          userId: this.userId
+    if (this.userEmail !== "" && this.userPassword !== "") {
+      this.dbService
+        .login(this.userEmail, this.userPassword)
+        .subscribe(data => {
+          if (data === null) {
+            // alert("failure to log in");
+            this.signInFail = true;
+          } else {
+            // right now this just assumes the signin was successful
+            this.signInFail = false;
+            this.userName = data[0].name;
+            this.userId = data[0].id;
+            this.signIn = 3;
+            this.loggedIn = true;
+            console.log(this.userName + " : " + this.userId);
+            this.dbService.setUser(this.userName, this.userId, this.loggedIn);
+            //
+            // sendUser sends the user object to the main app component
+            //
+            this.dbService.sendUser({
+              userName: this.userName,
+              userId: this.userId
+            });
+          }
         });
-      }
-    });
+    } else {
+      this.signInFail = true;
+    }
   }
   signMeUp() {
     //TODO: call service to sign up
