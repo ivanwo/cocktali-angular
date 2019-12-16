@@ -32,11 +32,7 @@ export class SearchComponent implements OnInit {
   noResults: boolean = false;
 
   cocktailSearch() {
-<<<<<<< HEAD
-
-=======
     // debugger;
->>>>>>> e62cf2f2375b75158c33c92e1e1085a4d215f209
     if (this.searchType === "Name") {
       // search by name
       this.resultsList = [];
