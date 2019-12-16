@@ -1,12 +1,14 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable, Subject } from "rxjs";
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root"
 })
 export class DbService {
-  BASE_URL = "http://localhost:3000";
+  //BASE_URL = "http://localhost:3000";
+  private readonly BASE_URL = environment.cocktaliBaseUrl;
   user = { userId: 0, userName: "" };
   userId: number = 0;
   userName: string = "";
