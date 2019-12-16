@@ -66,7 +66,14 @@
             📌
           </button>
           <h2 class="noteTitle">{{ note.title }}</h2>
-          <button (click)="showMore(i)" class="noteButton">more</button>
+          <button (click)="showMore(i)" class="noteButton">
+            <i *ngIf="showingMore[i]" class="material-icons"
+              >keyboard_arrow_up</i
+            >
+            <i *ngIf="!showingMore[i]" class="material-icons"
+              >keyboard_arrow_down</i
+            >
+          </button>
           <!-- <span>{{ note.added }}</span> -->
         </section>
         <section class="noteBody" *ngIf="showingMore[i]">

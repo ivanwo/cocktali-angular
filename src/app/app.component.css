@@ -11,6 +11,9 @@
   left: 50px;
   height: 100px;
 }
+.material-icons {
+  width: 24px;
+}
 header {
   position: fixed;
   display: flex;
@@ -62,11 +65,17 @@ header {
   /* border-top: 1px solid black; */
 }
 .homeLink {
-  margin: 10px 0;
+  /* margin: 10px 0; */
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  /* display: grid; */
+  align-items: center;
   color: white;
   text-decoration: none;
+}
+.homeLink i {
+  margin: 0 auto;
 }
 @media screen and (min-width: 700px) {
   .footerNav {
