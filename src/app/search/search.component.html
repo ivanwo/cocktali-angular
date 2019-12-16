@@ -47,8 +47,8 @@
       <img src="{{ cocktail.img }}" alt="" />
       <div class="infoBar" [ngClass]="{ favorite: cocktail.favorite }">
         <h2>{{ cocktail.name }}</h2>
-        <button (click)="addFav(cocktail.id)">save</button>
-        <button (click)="flip(cocktail)">more</button>
+        <button (click)="addFav(cocktail.id)" class="saveButton">save</button>
+        <button (click)="flip(cocktail)" class="material-icons">360</button>
       </div>
     </div>
     <div
@@ -66,8 +66,8 @@
       </div>
       <div class="infoBar">
         <h2>{{ cocktail.name }}</h2>
-        <button (click)="addFav(cocktail.id)">save</button>
-        <button (click)="flip(cocktail)">less</button>
+        <button (click)="addFav(cocktail.id)" class="saveButton">save</button>
+        <button (click)="flip(cocktail)" class="material-icons">360</button>
       </div>
     </div>
   </article>

@@ -1,5 +1,6 @@
 .logo {
   width: 50px;
+  filter: invert(100%);
 }
 header {
   position: fixed;
@@ -10,7 +11,8 @@ header {
   left: 0;
   right: 0;
   /* z-index: 2000; */
-  background-color: lightgray;
+  /* background-color: lightgray; */
+  background-color: #be2038;
   border-bottom: 1px solid black;
 }
 .userDisp {
@@ -18,6 +20,7 @@ header {
   justify-content: center;
   align-items: center;
   margin: 0 5px;
+  color: white;
   text-decoration: none;
 }
 .userDisp span {
@@ -25,8 +28,8 @@ header {
 }
 .spacer {
   /* 
-        THE SPACER IS TO MAKE SURE NOTHING DISAPPEARS BEHIND
-        THE NAV BARS
+    THE SPACER IS TO MAKE SURE NOTHING DISAPPEARS BEHIND
+    THE NAV BARS
 */
   height: 55px;
 }
@@ -44,12 +47,25 @@ header {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: lightgray;
+  /* background-color: lightgray; */
+  background-color: #be2038;
+
   border-top: 1px solid black;
 }
 .homeLink {
   margin: 10px 0;
   display: flex;
   flex-direction: column;
+  color: white;
   text-decoration: none;
+}
+@media screen and (min-width: 700px) {
+  .footerNav {
+    top: 0;
+    bottom: auto;
+    height: 50px;
+    max-width: 700px;
+    /* justify-content: center; */
+    margin: 0 auto;
+  }
 }

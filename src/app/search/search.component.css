@@ -2,6 +2,14 @@
   margin: 0;
   padding: 0;
 }
+button {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+}
+.saveButton {
+  font-weight: 700;
+  font-size: 1.25em;
+}
 .blur {
   display: flex;
   justify-content: center;
@@ -15,7 +23,6 @@
   background-color: rgba(99, 99, 99, 0.7);
 }
 .errorMsg {
-  background-color: rgb(99, 173, 156);
   background-color: lightgray;
   width: 80vw;
   display: flex;
@@ -24,7 +31,7 @@
 }
 .formHolder {
   position: fixed;
-  top: 50px;
+  top: 55px;
   left: 0;
   right: 0;
   background-color: white;
@@ -68,13 +75,13 @@ form {
   ITEMS AND RELATED ATTRIBUTES
 */
 .resultsBox {
+  margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 .card {
   width: 250px;
-  /* height: 260px; */
   margin: 5px;
 }
 img {
@@ -93,7 +100,6 @@ img {
 .backTop {
   width: 250px;
   min-height: 250px;
-  background: rgb(130, 206, 169);
 }
 
 ul {
