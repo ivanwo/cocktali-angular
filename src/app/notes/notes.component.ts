@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { DbService } from "../services/db.service";
+import { format } from "url";
 
 @Component({
   selector: "app-notes",
@@ -40,6 +41,9 @@ export class NotesComponent implements OnInit {
       })
       .subscribe(() => {
         this.getNotes();
+        this.newNoteTitle = "";
+        this.newNoteContent = "";
+        this.newNotePinned = false;
       });
   }
   getNotes() {
@@ -144,8 +148,8 @@ export class NotesComponent implements OnInit {
     }
   }
   ngOnInit() {
-    let user = this.dbService.getUser();
-    // let user = { loggedIn: true, userId: 1, userName: "test" };
+    // let user = this.dbService.getUser();
+    let user = { loggedIn: true, userId: 1, userName: "test" };
     if (user.loggedIn) {
       this.loggedIn = user.loggedIn;
       this.userId = user.userId;
