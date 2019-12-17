@@ -75,25 +75,67 @@ export class SearchComponent implements OnInit {
     } else if (this.searchType === "Category") {
       //search by category
       this.resultsList = [];
-      this.cocktailAPIService
-        .searchByCategory(this.searchCategory)
-        .subscribe(data => {
-          if (data.drinks === "None Found") {
-            // alert("no results");
-            this.noResults = true;
-          } else {
-            this.noResults = false;
-            for (let cocktail of data.drinks) {
-              this.resultsList.push({
-                name: cocktail.strDrink,
-                img: cocktail.strDrinkThumb,
-                favorite: false,
-                front: false,
-                id: cocktail.idDrink
-              });
+      if (this.searchCategory === "Non-Alcoholic") {
+        this.cocktailAPIService
+          .searchByNonAlcoholic(this.searchCategory)
+          .subscribe(data => {
+            if (data.drinks === "None Found") {
+              // alert("no results");
+              this.noResults = true;
+            } else {
+              this.noResults = false;
+              for (let cocktail of data.drinks) {
+                this.resultsList.push({
+                  name: cocktail.strDrink,
+                  img: cocktail.strDrinkThumb,
+                  favorite: false,
+                  front: false,
+                  id: cocktail.idDrink
+                });
+              }
             }
-          }
-        });
+          });
+      } else if (this.searchCategory === "Random") {
+        this.cocktailAPIService
+          .searchByRandom(this.searchCategory)
+          .subscribe(data => {
+            if (data.drinks === "None Found") {
+              // alert("no results");
+              this.noResults = true;
+            } else {
+              this.noResults = false;
+              for (let cocktail of data.drinks) {
+                this.resultsList.push({
+                  name: cocktail.strDrink,
+                  img: cocktail.strDrinkThumb,
+                  favorite: false,
+                  front: false,
+                  id: cocktail.idDrink
+                });
+              }
+            }
+          });
+      } else {
+        this.cocktailAPIService
+          .searchByCategory(this.searchCategory)
+          .subscribe(data => {
+            if (data.drinks === "None Found") {
+              // alert("no results");
+              this.noResults = true;
+            } else {
+              this.noResults = false;
+              for (let cocktail of data.drinks) {
+                this.resultsList.push({
+                  name: cocktail.strDrink,
+                  img: cocktail.strDrinkThumb,
+                  favorite: false,
+                  front: false,
+                  id: cocktail.idDrink
+                });
+              }
+            }
+          });
+      }
     } else {
       alert("you shouldn't have gotten here");
     }

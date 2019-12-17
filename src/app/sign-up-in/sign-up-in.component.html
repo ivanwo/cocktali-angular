@@ -1,4 +1,4 @@
-<section class="formHolder">
+<section class="formHolder" *ngIf="!loggedIn">
   <form name="signInForm" action="" *ngIf="signIn === 0" (submit)="signMeIn()">
     <!-- <label for="emailField">Email: </label> -->
     <input
@@ -49,3 +49,10 @@
 <h3 *ngIf="signInFail">SIGN IN FAILED</h3>
 <h3 *ngIf="signIn === 3">welcome to Cocktali, {{ userName }}.</h3>
 <h3 *ngIf="signUpFail">SIGN UP FAILED</h3>
+<section class="about" *ngIf="loggedIn">
+  <h2>About {{ userName }}</h2>
+  <p>{{ userEmail }}</p>
+  <p>{{ numNotes }} notes saved</p>
+  <p>{{ numFavs }} cocktails saved</p>
+  <a (click)="logOut()" routerLink="" > Log Out</a>
+</section>

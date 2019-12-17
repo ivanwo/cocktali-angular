@@ -14,7 +14,7 @@ export class CocktailAPIService {
   searchById(id): Observable<any> {
     return this.http.get(`${BASE_URL}/${API_KEY}/lookup.php?`, {
       params: {
-        i: id 
+        i: id
       }
     });
   }
@@ -30,6 +30,16 @@ export class CocktailAPIService {
     return this.http.get(`${BASE_URL}/${API_KEY}/filter.php?`, {
       params: {
         c: searchTerm
+      }
+    });
+  }
+  searchByRandom(searchTerm: string): Observable<any> {
+    return this.http.get(`${BASE_URL}/${API_KEY}/randomselection.php`);
+  }
+  searchByNonAlcoholic(searchTerm: string): Observable<any> {
+    return this.http.get(`${BASE_URL}/${API_KEY}/filter.php?`, {
+      params: {
+        a: "Non_Alcoholic"
       }
     });
   }

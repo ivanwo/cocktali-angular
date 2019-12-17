@@ -21,6 +21,11 @@ export class SignUpInComponent implements OnInit {
   signUpSuccess: boolean = false;
   signUpFail: boolean = false;
 
+  //
+  favList;
+  numFavs = 0;
+  numNotes = 0;
+
   constructor(private dbService: DbService) {}
 
   signMeIn() {
@@ -41,13 +46,20 @@ export class SignUpInComponent implements OnInit {
             this.signIn = 3;
             this.loggedIn = true;
             console.log(this.userName + " : " + this.userId);
-            this.dbService.setUser(this.userName, this.userId, this.loggedIn);
+            this.dbService.setUser(
+              this.userName,
+              this.userId,
+              this.loggedIn,
+              this.userEmail
+            );
             //
             // sendUser sends the user object to the main app component
             //
             this.dbService.sendUser({
               userName: this.userName,
-              userId: this.userId
+              userId: this.userId,
+              loggedIn: this.loggedIn,
+              userEmail: ""
             });
           }
         });
@@ -86,13 +98,51 @@ export class SignUpInComponent implements OnInit {
       //
     }
   }
+  getStuff() {
+    this.dbService.getFavs(this.userId).subscribe(data => {
+      this.favList = data;
+      // if(data.drinks ===null)
+      if (data === null) {
+        this.numFavs = 0;
+      } else {
+        this.numFavs = this.favList.length;
+      }
+      // console.log(this.numFavs);
+    });
+    this.dbService.getNotes(this.userId).subscribe(data => {
+      this.favList = data;
+      if (data === null) {
+        this.numNotes = 0;
+      } else {
+        this.numNotes = this.favList.length;
+      }
+      // console.log(this.numNotes);
+    });
+  }
+  logOut() {
+    this.dbService.sendUser({
+      userName: "Log In/ Sign Up",
+      userId: 0,
+      loggedIn: false,
+      userEmail: ""
+    });
+    this.dbService.setUser("Log In/ Sign Up", 0, false, "");
+  }
 
   ngOnInit() {
     let user = this.dbService.getUser();
+    // let user = {
+    //   userName: "ivan",
+    //   userId: 1,
+    //   loggedIn: true,
+    //   userEmail: "ivan@ivan.me"
+    // };
     if (user.loggedIn) {
       this.loggedIn = true;
       this.userId = user.userId;
       this.userName = user.userName;
+      this.userEmail = user.userEmail;
+      this.getStuff();
     }
   }
 }

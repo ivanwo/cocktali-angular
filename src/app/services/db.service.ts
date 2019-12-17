@@ -9,9 +9,10 @@ import { environment } from "src/environments/environment";
 export class DbService {
   //BASE_URL = "http://localhost:3000";
   private readonly BASE_URL = environment.cocktaliBaseUrl;
-  user = { userId: 0, userName: "" };
+  user = { userId: 0, userName: "Log in/ Sign Up", userEmail:"" };
   userId: number = 0;
   userName: string = "";
+  userEmail: string = "";
   loggedIn: boolean = false;
 
   private subject = new Subject<any>();
@@ -80,9 +81,10 @@ export class DbService {
     //
     //
   }
-  setUser(userName: string, userId: number, loggedIn: boolean) {
+  setUser(userName: string, userId: number, loggedIn: boolean, userEmail:string) {
     this.user.userId = userId;
     this.user.userName = userName;
+    this.user.userEmail = userEmail;
     // this.userName = userName;
     // this.userId = userId;
     this.loggedIn = loggedIn;
@@ -105,6 +107,7 @@ export class DbService {
     return {
       userId: this.user.userId,
       userName: this.user.userName,
+      userEmail: this.userEmail,
       loggedIn: this.loggedIn
     };
   }
