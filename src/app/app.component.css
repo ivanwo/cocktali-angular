@@ -5,15 +5,18 @@
   width: 50px;
   filter: invert(100%);
 }
+
 .logo-text {
   position: fixed;
   top: -25px;
   left: 50px;
   height: 100px;
 }
+
 .material-icons {
   width: 24px;
 }
+
 header {
   position: fixed;
   display: flex;
@@ -26,7 +29,9 @@ header {
   /* background-color: lightgray; */
   background-color: #be2038;
   /* border-bottom: 1px solid black; */
+
 }
+
 .userDisp {
   display: flex;
   justify-content: center;
@@ -35,22 +40,26 @@ header {
   color: white;
   text-decoration: none;
 }
+
 .userDisp span {
   padding-left: 10px;
 }
+
 .spacer {
   /* 
     THE SPACER IS TO MAKE SURE NOTHING DISAPPEARS BEHIND
     THE NAV BARS
 */
-  height: 55px;
+  height: 56px;
 }
+
 /*
     TO DO: TOGGLE CLASS BASED ON CURRENT PAGE
  */
 .currentPage {
   background-color: white;
 }
+
 .footerNav {
   /* width: 100vw; */
   position: fixed;
@@ -64,6 +73,7 @@ header {
 
   /* border-top: 1px solid black; */
 }
+
 .homeLink {
   /* margin: 10px 0; */
   display: flex;
@@ -86,6 +96,7 @@ header {
 .homeLink i {
   margin: 0 auto;
 }
+
 @media screen and (min-width: 700px) {
   .footerNav {
     top: 0;
@@ -96,4 +107,8 @@ header {
     /* justify-content: center; */
     margin: 0 auto;
   }
+}
+
+span {
+  font-family: 'Bebas Neue', cursive;
 }
