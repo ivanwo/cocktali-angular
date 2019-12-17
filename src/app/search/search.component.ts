@@ -26,7 +26,8 @@ export class SearchComponent implements OnInit {
     "negroni",
     "boulevardier",
     "martini",
-    "bloody mary"
+    "bloody mary",
+    "screwdriver"
   ];
   placeHolder: string;
   noResults: boolean = false;
