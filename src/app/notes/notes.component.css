@@ -115,14 +115,20 @@ input:focus {
 }
 
 .close {
-  color: #747474;
+  color: white;
   margin: 10px;
-  font-size: large;
-  position: relative;
   padding: 12px;
-  background: ghostwhite;
-  border: 2px #afbaaf4d solid;
+  background: #be2038;
+  border: 1px solid #000;
   font-size: larger;
+  border-radius: 10px;
+  align-self: center;
+  transition: 0.5s;
+}
+
+.close:hover {
+  background-color: #dfd7d8;
+  color: #be2038;
 }
 
 .submit-btn {
@@ -145,7 +151,6 @@ input:focus {
 .form-title {
   display: flex;
   flex-direction: row-reverse;
-  justify-content: space-between;
 }
 
 .noteHolder {
