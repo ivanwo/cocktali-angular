@@ -7,9 +7,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 5px;
+  margin: 5px 0;
   width: 97vw;
-  padding: 10px;
+  padding: 0;
 }
 
 .buttonBar {
@@ -59,7 +59,6 @@
   font-weight: 700;
   border-radius: 5px;
   background-color: #be2038;
-  transition: 0.5s;
   color: rgb(255, 255, 255);
 }
 
@@ -123,7 +122,6 @@ input:focus {
   font-size: larger;
   border-radius: 10px;
   align-self: center;
-  transition: 0.5s;
 }
 
 .close:hover {
@@ -139,7 +137,6 @@ input:focus {
   border-radius: 5px;
   background-color: #be2038;
   color: #fff;
-  transition: 0.5s;
   margin: 0 50px;
 }
 
