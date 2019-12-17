@@ -71,8 +71,17 @@ header {
   justify-content: center;
   /* display: grid; */
   align-items: center;
-  color: white;
+  transition: 0.5s;
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
+}
+.homeLink.active {
+  color: rgba(255, 255, 255, 1);
+  border-bottom: 2px solid white;
+  border-top: none;
+}
+.homeLink:hover {
+  color: rgba(255, 255, 255, 1);
 }
 .homeLink i {
   margin: 0 auto;
@@ -82,7 +91,8 @@ header {
     top: 0;
     bottom: auto;
     height: 50px;
-    max-width: 700px;
+    background-color: rgba(0, 0, 0, 0);
+    max-width: 500px;
     /* justify-content: center; */
     margin: 0 auto;
   }
