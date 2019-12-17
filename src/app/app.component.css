@@ -29,6 +29,7 @@ header {
   /* background-color: lightgray; */
   background-color: #be2038;
   /* border-bottom: 1px solid black; */
+
 }
 
 .userDisp {
@@ -49,7 +50,7 @@ header {
     THE SPACER IS TO MAKE SURE NOTHING DISAPPEARS BEHIND
     THE NAV BARS
 */
-  height: 20px;
+  height: 56px;
 }
 
 /*
@@ -97,4 +98,8 @@ header {
     /* justify-content: center; */
     margin: 0 auto;
   }
+}
+
+span {
+  font-family: 'Bebas Neue', cursive;
 }
