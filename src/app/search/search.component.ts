@@ -164,10 +164,13 @@ export class SearchComponent implements OnInit {
         cocktail[currentIngredient] !== ""
       ) {
         newIngredient = cocktail[currentIngredient];
-        if (cocktail[currentMeasure] === null && cocktail[currentMeasure] == "")
+        if (
+          cocktail[currentMeasure] === null ||
+          cocktail[currentMeasure] === ""
+        )
           newMeasure = "";
-        else newMeasure = " : " + cocktail[currentMeasure];
-        ingredients.push(newIngredient + newMeasure);
+        else newMeasure = cocktail[currentMeasure] + " ";
+        ingredients.push(newMeasure + newIngredient);
       } else {
         break;
       }

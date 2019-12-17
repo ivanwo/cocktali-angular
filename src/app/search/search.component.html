@@ -15,10 +15,21 @@
       <option value="Category">Category</option>
     </select>
     <!-- <label for="search">Search</label> -->
-    <input type="text" name="searchTerm" class="searchBox" placeholder="{{ placeHolder }}" [(ngModel)]="searchTerm"
-      *ngIf="searchType !== 'Category'" />
-    <select name="searchCategory" id="" class="searchCategory" *ngIf="searchType === 'Category'"
-      [(ngModel)]="searchCategory">
+    <input
+      type="text"
+      name="searchTerm"
+      class="searchBox"
+      placeholder="{{ placeHolder }}"
+      [(ngModel)]="searchTerm"
+      *ngIf="searchType !== 'Category'"
+    />
+    <select
+      name="searchCategory"
+      id=""
+      class="searchCategory"
+      *ngIf="searchType === 'Category'"
+      [(ngModel)]="searchCategory"
+    >
       <option value="Cocktail">Cocktail</option>
       <option value="Shot">Shot</option>
       <option value="Ordinary_Drink">Ordinary Drink</option>
@@ -42,7 +53,7 @@
         <button (click)="flip(cocktail)" class="material-icons">360</button>
       </div>
     </div>
-    <div *ngIf="cocktail.front" (click)="cocktail.front = !cocktail.front" class="card back">
+    <div *ngIf="cocktail.front" class="card back">
       <div class="backTop">
         <ul>
           <li *ngFor="let ingredient of cocktail.ingredients">

@@ -77,9 +77,13 @@ export class SavedComponent implements OnInit {
         cocktail[currentIngredient] !== ""
       ) {
         newIngredient = cocktail[currentIngredient];
-        if (cocktail[currentMeasure] === null) newMeasure = "";
-        else newMeasure = " : " + cocktail[currentMeasure];
-        ingredients.push(newIngredient + newMeasure);
+        if (
+          cocktail[currentMeasure] === null ||
+          cocktail[currentMeasure] === ""
+        )
+          newMeasure = "";
+        else newMeasure = cocktail[currentMeasure] + " ";
+        ingredients.push(newMeasure + newIngredient);
       } else {
         break;
       }
