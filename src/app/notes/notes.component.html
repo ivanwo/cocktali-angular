@@ -4,12 +4,7 @@
       <button class="add-btn" (click)="appear()">NEW</button>
       <div class="sortBy">
         Sort By:
-        <select
-          (change)="sort()"
-          name="sortMethod"
-          [(ngModel)]="sortMethod"
-          class="sortSelect"
-        >
+        <select (change)="sort()" name="sortMethod" [(ngModel)]="sortMethod" class="sortSelect">
           <option value="">sort by</option>
           <option class="opt" value="chrono">Date Added</option>
           <option value="alpha">Alphabetical</option>
@@ -23,32 +18,22 @@
    -->
     <form (submit)="addNote()" [ngClass]="{ testing: visible }" class="addForm">
       <div class="form-title">
-        <span (click)="appear()" class="close">X</span>
-        <input
-          class="note-title"
-          type="text"
-          name="newNoteTitle"
-          placeholder="Note Title!"
-          [(ngModel)]="newNoteTitle"
-        />
+        <span (click)="appear()" class="close">CANCEL</span>
+        <input class="note-title" type="text" name="newNoteTitle" placeholder="Note Title!"
+          [(ngModel)]="newNoteTitle" />
       </div>
       <label for="newNotePinned"></label>
-      <textarea
-        class="note-body"
-        name="newNoteContent"
-        placeholder="place text here"
-        [(ngModel)]="newNoteContent"
-      >
+      <textarea class="note-body" name="newNoteContent" placeholder="place text here" [(ngModel)]="newNoteContent">
       </textarea>
-      <button class="submit-btn" (click)="appear()" type="submit">
-        submit
-      </button>
-      <input
-        class="pinned-btn"
-        name="newNotePinned"
-        type="checkbox"
-        [(ngModel)]="newNotePinned"
-      />
+      <div class='pinSubmit'>
+        <button class="submit-btn" (click)="appear()" type="submit">
+          SUBMIT
+        </button>
+        <div class='pinDiv'>
+          <label for='pinned-btn'>PIN TO TOP: </label>
+          <input class="pinned-btn" name="newNotePinned" type="checkbox" [(ngModel)]="newNotePinned" />
+        </div>
+      </div>
     </form>
   </div>
   <!-- 
@@ -67,12 +52,8 @@
           </button>
           <h2 class="noteTitle">{{ note.title }}</h2>
           <button (click)="showMore(i)" class="noteButton">
-            <i *ngIf="showingMore[i]" class="material-icons"
-              >keyboard_arrow_up</i
-            >
-            <i *ngIf="!showingMore[i]" class="material-icons"
-              >keyboard_arrow_down</i
-            >
+            <i *ngIf="showingMore[i]" class="material-icons">keyboard_arrow_up</i>
+            <i *ngIf="!showingMore[i]" class="material-icons">keyboard_arrow_down</i>
           </button>
           <!-- <span>{{ note.added }}</span> -->
         </section>
@@ -91,28 +72,13 @@
       <form (submit)="editNote(i, note.id)" *ngIf="editing[i]" class="note">
         <section class="noteHeader">
           <!-- <label for="editNotePinned">Pinned:</label> -->
-          <input
-            class="edit-pinned-btn"
-            name="editNotePinned"
-            type="checkbox"
-            [(ngModel)]="editNotePinned"
-          />
-          <input
-            class="title-edit"
-            type="text"
-            name="editNoteTitle"
-            placeholder="{{ note.title }}"
-            [(ngModel)]="editNoteTitle"
-          />
+          <input class="edit-pinned-btn" name="editNotePinned" type="checkbox" [(ngModel)]="editNotePinned" />
+          <input class="title-edit" type="text" name="editNoteTitle" placeholder="{{ note.title }}"
+            [(ngModel)]="editNoteTitle" />
         </section>
         <section class="noteBody">
-          <textarea
-            name="editNoteContent"
-            cols="35"
-            rows="5"
-            [(ngModel)]="editNoteContent"
-            class="content-edit"
-          ></textarea>
+          <textarea name="editNoteContent" cols="35" rows="5" [(ngModel)]="editNoteContent"
+            class="content-edit"></textarea>
 
           <button type="submit">FINISHED</button>
           <button (click)="editing[i] = false">Cancel</button>

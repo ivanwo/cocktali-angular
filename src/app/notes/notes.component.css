@@ -2,6 +2,7 @@
   margin: 0 auto;
   width: 80vw;
 }
+
 .addBar {
   display: flex;
   justify-content: space-between;
@@ -18,9 +19,10 @@
 
 .container {
   max-width: 700px;
-  display: flex;  
+  display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 0 auto;
 }
 
 .sortSelect {
@@ -28,6 +30,11 @@
   height: 25px;
   width: 85px;
   border-radius: 5px;
+}
+
+.sortBy {
+  margin: 5px 30px;
+  padding: 5px;
 }
 
 .note-title {
@@ -51,7 +58,14 @@
   width: 80px;
   font-weight: 700;
   border-radius: 5px;
-  background-color: rgb(186, 228, 181);
+  background-color: #be2038;
+  transition: 0.5s;
+  color: rgb(255, 255, 255);
+}
+
+.add-btn:hover {
+  background-color: #dfd7d8;
+  color: #be2038;
 }
 
 .add-btn:focus {
@@ -92,7 +106,7 @@ input:focus {
   visibility: visible;
   width: 100%;
   height: 100%;
-  background: #eff9ee;
+  background: white;
   opacity: 1;
   position: absolute;
   top: 106px;
@@ -112,8 +126,20 @@ input:focus {
 }
 
 .submit-btn {
-  background: rgb(186, 228, 181);
-  padding: 10px;
+  border: 1px solid #000;
+  height: 25px;
+  width: 80px;
+  font-weight: 700;
+  border-radius: 5px;
+  background-color: #be2038;
+  color: #fff;
+  transition: 0.5s;
+  margin: 0 50px;
+}
+
+.submit-btn:hover {
+  background-color: #dfd7d8;
+  color: #be2038;
 }
 
 .form-title {
@@ -128,7 +154,13 @@ input:focus {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  z-index: -1;
 }
+
 
 .content-edit {
   width: 97%;
@@ -148,16 +180,17 @@ input:focus {
 }
 
 .noteButton {
-  background: rgb(99, 173, 156);
-
-  border: 1px solid black;
-  border-radius: 2px;
+  background-color: #be2038;
+  color: white;
+  border: 1px solid #be2038;
+  /* border-radius: 2px; */
 }
 
 .noteHeader {
   display: flex;
   /* flex-direction: row; */
-  background-color: rgb(186, 228, 181);
+  background-color: #be2038;
+  color: white;
   border-bottom: 1px solid black;
   justify-content: space-between;
 }
@@ -175,11 +208,24 @@ input:focus {
   border: none;
   cursor: pointer;
   background: none;
+  color: transparent;
   /* background: rgb(22, 120, 86); */
 }
 
 .pinned {
-  background: rgb(99, 173, 156);
+  background: #ffffff9e;
+  color: #fff;
+  border-radius: 100%;
+  margin: 5px;
+}
+
+.pinDiv {
+  display: flex;
+}
+
+.pinned-btn {
+  height: 20px;
+  width: 20px;
 }
 
 a:-webkit-any-link {
@@ -197,9 +243,15 @@ a:-webkit-any-link {
 }
 
 input[type="checkbox"i] {
-  margin: 10px;
+  margin: 0 5px;
 }
 
 .login-bar {
   font-size: large;
+}
+
+.pinSubmit {
+  display: flex;
+  justify-content: center;
+
 }
