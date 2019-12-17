@@ -9,8 +9,7 @@
   </a>
   <a routerLink="sign" class="userDisp">
     <i class="material-icons">account_circle</i>
-    <span *ngIf="!loggedIn">{{ user.userName }}</span>
-    <span *ngIf="loggedIn">{{ user.userName }}</span>
+    <span>{{ user.userName }}</span>
   </a>
 </header>
 <!-- spacer div ensures nothing is hidden hebind the header -->

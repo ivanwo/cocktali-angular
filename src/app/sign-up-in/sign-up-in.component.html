@@ -45,7 +45,7 @@
     <button type="submit">Sign me up</button>
     <a (click)="signIn = 0">already a user?</a>
   </form>
-  <h3 *ngIf="signInFail">SIGN IN FAILED</h3>
-  <h3 *ngIf="signIn === 3">welcome to Cocktali, {{ userName }}.</h3>
-  <h3 *ngIf="signUpFail">SIGN UP FAILED</h3>
 </section>
+<h3 *ngIf="signInFail">SIGN IN FAILED</h3>
+<h3 *ngIf="signIn === 3">welcome to Cocktali, {{ userName }}.</h3>
+<h3 *ngIf="signUpFail">SIGN UP FAILED</h3>

@@ -35,6 +35,7 @@ export class SignUpInComponent implements OnInit {
           } else {
             // right now this just assumes the signin was successful
             this.signInFail = false;
+            this.signUpFail = false;
             this.userName = data[0].name;
             this.userId = data[0].id;
             this.signIn = 3;

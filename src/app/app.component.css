@@ -42,7 +42,7 @@ header {
 }
 
 .userDisp span {
-  padding-left: 10px;
+  padding: 0 10px;
 }
 
 .spacer {
