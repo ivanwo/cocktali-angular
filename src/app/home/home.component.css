@@ -1,5 +1,4 @@
-@media screen and (min-width: 700px) {
-}
+@media screen and (min-width: 700px) {}
 
 .body {
   /*  */
@@ -11,6 +10,7 @@
   width: 100%;
   overflow: hidden;
 }
+
 #myVideo {
   margin: 0 auto;
   min-width: 100%;
@@ -52,19 +52,20 @@ a:-webkit-any-link {
   font-size: xxx-large;
   transition: 400ms;
 }
+
 .search-span {
-  border: transparent 10px solid;
   transition: 1s;
   width: 100%;
+  font-family: 'Bebas Neue', cursive;
 }
-.search-span:hover {
-  border: white;
-}
+
+
 .nav-bar {
   background: #be2038;
   display: flex;
   flex-direction: row-reverse;
 }
+
 #nav-text {
   color: rgb(255, 255, 255);
   font-size: 1.5em;
@@ -72,15 +73,15 @@ a:-webkit-any-link {
   margin: 0px 18px;
   transition: 500ms;
 }
+
 #nav-text:hover {
   color: rgb(253, 219, 219);
   box-shadow: 2px 9px 40px 14px #00000082;
-  background: radial-gradient(
-    circle,
-    rgba(165, 165, 165, 0.33) 0%,
-    rgba(190, 32, 48, 1) 100%
-  );
+  background: radial-gradient(circle,
+      rgba(165, 165, 165, 0.33) 0%,
+      rgba(190, 32, 48, 1) 100%);
 }
+
 .logo-img {
   background-image: url(/assets//newlogo.png);
   z-index: 9;
@@ -90,6 +91,7 @@ a:-webkit-any-link {
   padding: 3px;
   margin: 2px;
 }
+
 .logo-text {
   background-image: url(/CocktaliWordsLogo.png);
   z-index: 9;
