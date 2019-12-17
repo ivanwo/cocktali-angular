@@ -74,16 +74,43 @@ form {
   THE ABOVE WOULD BE FOR  THE SEARCHBAR, ALL BELOW IS STYLING FOR THE SEARCH RESULT
   ITEMS AND RELATED ATTRIBUTES
 */
+/* .forward {
+  transform: rotateY(0deg);
+}
+.back {
+  transform: rotateY(90deg);
+} */
 .resultsBox {
-  margin-top: 10px;
+  margin-top: 50px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
+.flip {
+  animation-name: flipcard;
+}
+@keyframes flipcard {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(90deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
+}
 .card {
   width: 250px;
+  /* height: 500px; */
+
+  transition: 0.5s;
   margin: 5px;
 }
+/* .card.front,
+.card.back {
+  position: absolute;
+} */
 img {
   width: 250px;
   height: 250px;
@@ -101,7 +128,6 @@ img {
   width: 250px;
   min-height: 250px;
 }
-
 ul {
   display: flex;
   padding-left: 25px;
