@@ -24,12 +24,12 @@ header {
   align-items: center;
   top: 0;
   left: 0;
+  z-index: 4;
   right: 0;
   /* z-index: 2000; */
   /* background-color: lightgray; */
   background-color: #be2038;
   /* border-bottom: 1px solid black; */
-
 }
 
 .userDisp {
@@ -70,7 +70,7 @@ header {
   right: 0;
   /* background-color: lightgray; */
   background-color: #be2038;
-
+  z-index: 5;
   /* border-top: 1px solid black; */
 }
 
@@ -110,5 +110,5 @@ header {
 }
 
 span {
-  font-family: 'Bebas Neue', cursive;
+  font-family: "Bebas Neue", cursive;
 }
