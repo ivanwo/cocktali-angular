@@ -70,6 +70,7 @@ header {
   right: 0;
   /* background-color: lightgray; */
   background-color: #be2038;
+  height: 46px;
 
   /* border-top: 1px solid black; */
 }
@@ -85,14 +86,17 @@ header {
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
 }
+
 .homeLink.active {
   color: rgba(255, 255, 255, 1);
   border-bottom: 2px solid white;
   border-top: none;
 }
+
 .homeLink:hover {
   color: rgba(255, 255, 255, 1);
 }
+
 .homeLink i {
   margin: 0 auto;
 }
@@ -111,4 +115,10 @@ header {
 
 span {
   font-family: 'Bebas Neue', cursive;
+}
+
+.userDisp span {
+  padding: 1 10px;
+  color: #ffffe6;
+  margin-top: 3px;
 }
