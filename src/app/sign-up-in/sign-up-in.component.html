@@ -1,47 +1,20 @@
 <section class="formHolder" *ngIf="!loggedIn">
   <form name="signInForm" action="" *ngIf="signIn === 0" (submit)="signMeIn()">
     <!-- <label for="emailField">Email: </label> -->
-    <input
-      name="emailField"
-      type="email"
-      placeholder=" e m a i l "
-      [(ngModel)]="userEmail"
-      email
-    />
+    <input name="emailField" type="email" placeholder=" e m a i l " [(ngModel)]="userEmail" email />
     <!-- <label for="passwordField">Password: </label> -->
-    <input
-      name="passwordField"
-      type="password"
-      placeholder=" p a s s w o r d "
-      [(ngModel)]="userPassword"
-    />
+    <input name="passwordField" type="password" placeholder=" p a s s w o r d " [(ngModel)]="userPassword" />
     <button type="submit">Sign in</button>
     <a (click)="signIn = 1">not a user yet?</a>
   </form>
   <form name="signUpForm" action="" *ngIf="signIn === 1" (submit)="signMeUp()">
     <h3 *ngIf="acctExists">email already has account</h3>
     <!-- <label for="nameField">Name: </label> -->
-    <input
-      name="nameField"
-      type="text"
-      placeholder=" N a m e"
-      [(ngModel)]="newUserName"
-    />
+    <input name="nameField" type="text" placeholder=" N a m e" [(ngModel)]="newUserName" />
     <!-- <label for="emailField">Email: </label> -->
-    <input
-      name="emailField"
-      type="email"
-      placeholder=" e ~ m a i l"
-      [(ngModel)]="newUserEmail"
-      email
-    />
+    <input name="emailField" type="email" placeholder=" e ~ m a i l" [(ngModel)]="newUserEmail" email />
     <!-- <label for="passwordField">Password: </label> -->
-    <input
-      name="passwordField"
-      type="password"
-      placeholder=" p a s s w o r d "
-      [(ngModel)]="newUserPassword"
-    />
+    <input name="passwordField" type="password" placeholder=" p a s s w o r d " [(ngModel)]="newUserPassword" />
     <button type="submit">Sign me up</button>
     <a (click)="signIn = 0">already a user?</a>
   </form>
@@ -54,5 +27,5 @@
   <p>{{ userEmail }}</p>
   <p>{{ numNotes }} notes saved</p>
   <p>{{ numFavs }} cocktails saved</p>
-  <a (click)="logOut()" routerLink="" > Log Out</a>
+  <a (click)="logOut()" routerLink=""> Log Out</a>
 </section>

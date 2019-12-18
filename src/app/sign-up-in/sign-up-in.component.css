@@ -3,6 +3,7 @@
   display: flex;
   justify-content: center;
 }
+
 form {
   width: 65vw;
   display: flex;
@@ -12,15 +13,19 @@ form {
   flex-direction: column;
   align-items: center;
 }
+
 input {
   border: none;
 }
+
 form * {
   margin: 10px auto 0 auto;
 }
+
 form a {
   color: #be2038;
 }
+
 h3 {
   color: #be2038;
   text-align: center;
@@ -31,7 +36,12 @@ h3 {
   .formHolder {
     margin-top: 10%;
   }
+
   form {
     max-width: 400px;
   }
+}
+
+.about {
+  text-align: center;
 }
