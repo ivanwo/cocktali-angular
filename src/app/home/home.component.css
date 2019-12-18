@@ -8,7 +8,7 @@
     position: absolute;
     flex-direction: column;
     display: flex;
-    justify-content: center;
+    justify-content: top;
     align-items: center;
     top: 45px;
     bottom: 45px;
@@ -22,6 +22,9 @@
   .body2 p,
   .body2 h3 {
     background-color: rgba(0, 0, 0, 0.25);
+  }
+  .body2 section {
+    margin-top: 100px;
   }
 }
 
