@@ -3,6 +3,7 @@
     transform: rotateY(90deg);
   }
   .body2 {
+    transform: rotateY(0deg);
     background-image: url("../../assets/img.png");
     background-position: center;
     position: absolute;
@@ -21,13 +22,19 @@
   }
   .body2 p,
   .body2 h3 {
-    background-color: rgba(0, 0, 0, 0.25);
+    background-color: rgba(255, 255, 255, 0.25);
   }
   .body2 section {
     margin-top: 100px;
   }
 }
-
+@media screen and (min-width: 700px) {
+  .body2 {
+    transform: rotateY(90deg);
+    background-color: royalblue;
+    z-index: -2000;
+  }
+}
 .body {
   /*  */
   /* visibility: visible; */
