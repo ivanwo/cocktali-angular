@@ -46,7 +46,7 @@
   }
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 1025px) {
   .body2 {
     transform: rotateY(90deg);
     background-color: royalblue;
@@ -172,7 +172,7 @@ a:-webkit-any-link {
 
 }
 
-.body2 button {
+.body2 a {
   border: none;
   padding: 35px 85px;
   margin: 5px;

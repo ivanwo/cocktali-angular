@@ -1,0 +1,9 @@
+.holder {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+img {
+  width: 400px;
+  max-width: 90vw;
+}

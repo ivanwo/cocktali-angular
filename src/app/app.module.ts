@@ -9,6 +9,7 @@ import { SearchComponent } from "./search/search.component";
 import { NotesComponent } from "./notes/notes.component";
 import { SavedComponent } from "./saved/saved.component";
 import { SignUpInComponent } from "./sign-up-in/sign-up-in.component";
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SignUpInComponent } from "./sign-up-in/sign-up-in.component";
     SearchComponent,
     NotesComponent,
     SavedComponent,
-    SignUpInComponent
+    SignUpInComponent,
+    AboutComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
