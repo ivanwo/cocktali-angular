@@ -1,4 +1,29 @@
-@media screen and (min-width: 700px) {}
+@media screen and (max-width: 700px) {
+  .body {
+    transform: rotateY(90deg);
+  }
+  .body2 {
+    background-image: url("../../assets/img.png");
+    background-position: center;
+    position: absolute;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 45px;
+    bottom: 45px;
+    width: 100vw;
+    z-index: -1;
+  }
+  .body2 button {
+    border: none;
+    margin-bottom: 20px;
+  }
+  .body2 p,
+  .body2 h3 {
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+}
 
 .body {
   /*  */
@@ -56,9 +81,8 @@ a:-webkit-any-link {
 .search-span {
   transition: 1s;
   width: 100%;
-  font-family: 'Bebas Neue', cursive;
+  font-family: "Bebas Neue", cursive;
 }
-
 
 .nav-bar {
   background: #be2038;
@@ -77,9 +101,11 @@ a:-webkit-any-link {
 #nav-text:hover {
   color: rgb(253, 219, 219);
   box-shadow: 2px 9px 40px 14px #00000082;
-  background: radial-gradient(circle,
-      rgba(165, 165, 165, 0.33) 0%,
-      rgba(190, 32, 48, 1) 100%);
+  background: radial-gradient(
+    circle,
+    rgba(165, 165, 165, 0.33) 0%,
+    rgba(190, 32, 48, 1) 100%
+  );
 }
 
 .logo-img {
