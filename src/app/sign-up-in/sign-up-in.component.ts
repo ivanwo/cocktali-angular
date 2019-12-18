@@ -61,6 +61,7 @@ export class SignUpInComponent implements OnInit {
               loggedIn: this.loggedIn,
               userEmail: ""
             });
+            this.getStuff();
           }
         });
     } else {
