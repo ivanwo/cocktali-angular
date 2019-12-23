@@ -57,7 +57,7 @@ export class DbService {
   }
   deleteFav(savedId) {
     // console.log(savedId);
-    return this.http.delete(this.BASE_URL + "/favs/" + savedId);
+   m return this.http.delete(this.BASE_URL + "/favs/" + savedId);
   }
 
   //
